@@ -6,7 +6,7 @@ import { Location } from "@/lib/interface";
 export default function Hero({ location } : { location: Location }){
     return (
         <div className="relative w-full h-125">
-            <Image src="/hero-img.png" fill alt="Hero Image" className="object-cover" />
+            <Image src="/homepage/hero-img.png" fill alt="Hero Image" className="object-cover" />
             <div className="w-full h-full absolute text-white flex flex-col items-center justify-center gap-3">
                 <p className="text-4xl font-semibold">Find the best local <span className="text-theme">Dentist</span> for you</p>
                 <p className="text-lg">Book a free consultation with a licensed provider today</p>

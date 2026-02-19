@@ -7,6 +7,9 @@ import { Location } from "@/lib/interface";
 import FeaturedDentalOffices from "@/components/featured-dental-offices";
 import ExploreMoreTopics from "@/components/explore-more-topics";
 import RecentReviews from "@/components/recent-reviews";
+import HowItWorks from "@/components/how-it-works";
+import FAQS from "@/components/faqs";
+import HomeFooter from "@/components/home-footer";
 
 export default function HomePage(){
     const [ location, setLocation ] = useState<Location>({
@@ -22,6 +25,9 @@ export default function HomePage(){
             <FeaturedDentalOffices />
             <ExploreMoreTopics />
             <RecentReviews />
+            <HowItWorks />
+            <FAQS />
+            <HomeFooter />
         </div>
     )
 }
