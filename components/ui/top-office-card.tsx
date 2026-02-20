@@ -4,8 +4,22 @@ import { CiLocationOn } from "react-icons/ci";
 import StarRatings from 'react-star-ratings'
 import Button from "./button";
 import VideoCard from "./video-card";
+import { useState } from "react";
+import AppointmentRequestModal from "./appointment-request-modal";
 
-export default function TopOfficeCard({ officeCard: { name, logoUrl, rating, reviewCount, address, isAvailable, website, isSponsored, videoUrl: { videoSrc, videoThumbnail } } }:{ officeCard: OfficeData }){
+export default function TopOfficeCard({ officeCard }:{ officeCard: OfficeData }){
+    const { name, logoUrl, rating, reviewCount, address, isAvailable, website, isSponsored, videoUrl: { videoSrc, videoThumbnail } } = officeCard
+
+    const [ openModal, setOpenModal ] = useState(false);
+    
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
     return (
         <div className="border-b border-gray-300 p-5">
             <div className="flex gap-10">
@@ -48,9 +62,10 @@ export default function TopOfficeCard({ officeCard: { name, logoUrl, rating, rev
                         )}
                         <div className="text-gray-500">New patient appointments • Highly recommended • Excellent wait time</div>
                     </div>
-                    <div className="w-full text-center"><Button fill text="Send Appointment Request"/></div>
+                    <div className="w-full text-center" onClick={handleOpenModal}><Button fill text="Send Appointment Request"/></div>
                 </div>
             </div>
+            <AppointmentRequestModal isOpen={openModal} onClose={handleCloseModal} officeData={officeCard} />
         </div>
     )
 }
