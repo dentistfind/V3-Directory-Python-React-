@@ -30,3 +30,15 @@ export interface FaqData {
     question: string,
     answer: string
 }
+
+export interface OfficeData {
+    name: string,
+    address: string,
+    logoUrl?: string,
+    rating: number,
+    reviewCount: string,
+    isAvailable?: boolean,
+    isSponsored?: boolean,
+    website?: string,
+    videoUrl: VideoCardData
+}

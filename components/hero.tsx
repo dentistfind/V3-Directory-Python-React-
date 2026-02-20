@@ -2,6 +2,8 @@ import Image from "next/image";
 import { CiSearch, CiLocationOn } from "react-icons/ci";
 import Button from "./ui/button";
 import { Location } from "@/lib/interface";
+import Link from "next/link";
+import { TOP_OFFICES_URL } from "@/lib/routes";
 
 export default function Hero({ location } : { location: Location }){
     return (
@@ -19,13 +21,15 @@ export default function Hero({ location } : { location: Location }){
                         <CiLocationOn />
                         <p>{location?.city}, {location?.country}</p>
                     </div>
-                    <Button 
-                        fill 
-                        text={<div className="flex items-center justify-center text-sm gap-2">
-                            <CiSearch />
-                            <p>Find Dentist</p>
-                        </div>} 
-                    />
+                    <Link href={TOP_OFFICES_URL}>
+                        <Button 
+                            fill 
+                            text={<div className="flex items-center justify-center text-sm gap-2">
+                                <CiSearch />
+                                <p>Find Dentist</p>
+                            </div>} 
+                        />
+                    </Link>
                 </div>
             </div>
         </div>
