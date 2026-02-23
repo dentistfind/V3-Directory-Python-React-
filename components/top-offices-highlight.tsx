@@ -1,96 +1,10 @@
 "use client"
-import { SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3 } from "@/lib/constants";
-import { Location, OfficeData } from "@/lib/interface";
+import { Location } from "@/lib/interface";
 import { useState, useMemo } from "react";
 import TopOfficeCard from "./ui/top-office-card";
 import { GoogleMapsEmbed } from "@next/third-parties/google";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-
-export const dummyOffices: OfficeData[] = [
-  {
-    name: "BrightSmile Dental Studio",
-    address: "2458 Sunset Blvd, Los Angeles, CA 90026",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1689096818551-edb79a6fa3da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.9,
-    reviewCount: "312",
-    isAvailable: true,
-    isSponsored: true,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO1,
-  },
-  {
-    name: "PearlCare Family Dentistry",
-    address: "1021 Westheimer Rd, Houston, TX 77006",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1683141234968-b4f861c0546a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.7,
-    reviewCount: "198",
-    isAvailable: true,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO2,
-  },
-  {
-    name: "Elite Orthodontics Center",
-    address: "890 Lake Shore Dr, Chicago, IL 60611",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1683141203239-494e6cd1fe51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.8,
-    reviewCount: "421",
-    isAvailable: false,
-    isSponsored: true,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO3,
-  },
-  {
-    name: "Downtown Dental Hub",
-    address: "55 Broad St, New York, NY 10004",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1683141234968-b4f861c0546a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.5,
-    reviewCount: "156",
-    isAvailable: true,
-    videoUrl: SPOTLIGHT_VIDEO1,
-  },
-  {
-    name: "GentleTouch Pediatric Dentistry",
-    address: "7432 N Central Ave, Phoenix, AZ 85020",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1689096818551-edb79a6fa3da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.9,
-    reviewCount: "287",
-    isAvailable: true,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO2,
-  },
-  {
-    name: "Urban Smiles Cosmetic Clinic",
-    address: "1200 Brickell Ave, Miami, FL 33131",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1683141234968-b4f861c0546a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.6,
-    reviewCount: "204",
-    isAvailable: true,
-    isSponsored: false,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO3,
-  },
-  {
-    name: "Greenwood Dental Associates",
-    address: "4500 Greenwood Ave N, Seattle, WA 98103",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1683141203239-494e6cd1fe51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 4.4,
-    reviewCount: "98",
-    isAvailable: false,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO1,
-  },
-  {
-    name: "Harmony Dental & Implants",
-    address: "3320 Peachtree Rd NE, Atlanta, GA 30326",
-    logoUrl: "https://plus.unsplash.com/premium_vector-1689096818551-edb79a6fa3da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    rating: 5.0,
-    reviewCount: "509",
-    isAvailable: true,
-    isSponsored: true,
-    website: "www.familydentalcare.com",
-    videoUrl: SPOTLIGHT_VIDEO2,
-  },
-];
+import { dummyOffices } from "@/lib/temp-data";
 
 const PAGINATION_CUTOFF = 3
 const totalRecordCount = [...dummyOffices].length

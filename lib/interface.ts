@@ -32,15 +32,24 @@ export interface FaqData {
 }
 
 export interface OfficeData {
+    id: string,
     name: string,
     address: string,
+    mobileNumber?: string,
+    email?: string,
     logoUrl?: string,
     rating: number,
     reviewCount: string,
     isAvailable?: boolean,
     isSponsored?: boolean,
     website?: string,
-    videoUrl: VideoCardData
+    videoUrl: VideoCardData,
+    galleryMedia?: {
+        isVideo: boolean,
+        videoUrl?: VideoCardData,
+        imageUrl?: string
+    }[],
+    reviews?: ReviewData[]
 }
 
 export interface ModalProps {

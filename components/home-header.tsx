@@ -8,7 +8,7 @@ import { Location } from "@/lib/interface";
 
 export default function HomeHeader({ notHomePage, location }:{ notHomePage?: boolean, location?: Location }){
     return(
-        <div className="bg-white px-5 py-3 flex justify-between items-center">
+        <div className="bg-white px-5 py-3 flex justify-between items-center border border-b">
             <Link href={HOME_PAGE_URL}><Image src="/dentistfind-logo.png" width={100} height={100} alt="DentistFind Logo" /></Link>
             {notHomePage && 
                 <div className="shadow border border-gray-200 bg-white p-2 rounded-full text-gray-600 h-15 flex items-center justify-center gap-10 *:flex *:items-center *:justify-center *:gap-2">
