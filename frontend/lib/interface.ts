@@ -81,3 +81,10 @@ export interface RequestAppointmentData {
     serviceRequired: string,
     lastDentalVisit?: Date
 }
+
+export interface AddressData { 
+    street: string, 
+    city: string, 
+    state: string,
+    zip: string 
+}

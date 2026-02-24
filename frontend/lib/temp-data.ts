@@ -1,5 +1,5 @@
 import { OfficeReviewsSet1, OfficeReviewsSet2, OfficeReviewsSet3, OfficeReviewsSet4, OfficeReviewsSet5, OfficeReviewsSet6, OfficeReviewsSet7, SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3, } from "./constants";
-import { OfficeData } from "./interface";
+import { OfficeData, OfficeVerificationData } from "./interface";
 
 export const dummyOffices: OfficeData[] = [
   {
@@ -272,3 +272,34 @@ export const dummyOffices: OfficeData[] = [
     reviews: OfficeReviewsSet3
   },
 ];
+
+export const initialOfficeData: OfficeData = {
+  id: "",
+  officeName: "",
+  ownerName: "",
+  address: "",
+  mobileNumber: "",
+  email: "",
+  description: "",
+  logoUrl: "",
+  rating: 0,
+  reviewCount: "0",
+  isAvailable: false,
+  isSponsored: false,
+  website: "",
+  videoUrl: {
+    videoSrc: "",
+    videoThumbnail: "",
+    duration: "",
+    spotlight: false
+  },
+  galleryMedia: [],
+  reviews: []
+};
+
+export const initialOfficeVerData: OfficeVerificationData = {
+    licenseNumber: "",
+    taxId: "",
+    licenseDocumentSrc: "",
+    liabilityInsuranceSrc: ""
+}
