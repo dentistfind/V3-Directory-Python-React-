@@ -3,10 +3,10 @@ import Image from "next/image";
 import Button from "./ui/button";
 import { CiLocationOn, CiSearch } from "react-icons/ci";
 import Link from "next/link";
-import { HOME_PAGE_URL, TOP_OFFICES_URL } from "@/lib/routes";
+import { HOME_PAGE_URL, LOGIN_PAGE_URL, REGISTER_PAGE_URL, TOP_OFFICES_URL } from "@/lib/routes";
 import { Location } from "@/lib/interface";
 
-export default function HomeHeader({ notHomePage, location }:{ notHomePage?: boolean, location?: Location }){
+export default function Header({ notHomePage, location, authPage }:{ notHomePage?: boolean, location?: Location, authPage?: boolean }){
     return(
         <div className="bg-white px-5 py-3 flex justify-between items-center border border-b">
             <Link href={HOME_PAGE_URL}><Image src="/dentistfind-logo.png" width={100} height={100} alt="DentistFind Logo" /></Link>
@@ -31,10 +31,10 @@ export default function HomeHeader({ notHomePage, location }:{ notHomePage?: boo
                     </Link>
                 </div>
             }
-            <div className="text-sm flex items-center gap-3 *:cursor-pointer">
-                <p className="hover:text-gray-500 text-black">Register as Office</p>
-                <Button text="Log In" />
-            </div>
+            {!authPage && <div className="text-sm flex items-center gap-3 *:cursor-pointer">
+                <Link href={REGISTER_PAGE_URL} className="hover:text-gray-500 text-black">Register as Office</Link>
+                <Link href={LOGIN_PAGE_URL}><Button text="Log In" /></Link>
+            </div>}
         </div>
     )
 }

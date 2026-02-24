@@ -6,7 +6,7 @@ const dentistGroups = ["New York dentist groups", "Massachusetts dentist groups"
 const healthInsurances = ["Aetna", "Blue Cross Blue Shield", "Blue Cross Blue Shield IL PPO", "Blue Cross Blue Shield MA HMO", "Blue Cross Blue Shield MA PPO", "Cigna"]
 const specialties = ["Invisalign", "Dental Implants", "Paediatrics Dental", "RTC", "Root Canal", "Teeth Alignment"]
 
-export default function HomeFooter(){
+export default function Footer(){
     const [ footerData, setFooterData ] = useState({ dentists, dentistGroups, healthInsurances, specialties })
 
     return (
