@@ -300,6 +300,6 @@ export const initialOfficeData: OfficeData = {
 export const initialOfficeVerData: OfficeVerificationData = {
     licenseNumber: "",
     taxId: "",
-    licenseDocumentSrc: "",
+    licenseDocumentSrc: "h",
     liabilityInsuranceSrc: ""
 }

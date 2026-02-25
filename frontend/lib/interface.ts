@@ -72,7 +72,8 @@ export interface InputProps {
     onChange: React.ChangeEventHandler<HTMLInputElement>,
     value: string | number | readonly string[] | undefined
     placeholder?: string,
-    isInvalid?: boolean
+    isInvalid?: boolean,
+    type?: string,
 }
 
 export interface RequestAppointmentData {
@@ -87,4 +88,9 @@ export interface AddressData {
     city: string, 
     state: string,
     zip: string 
+}
+
+export interface LoginData {
+    email: string,
+    password: string
 }

@@ -7,15 +7,16 @@ import { useState } from "react";
 
 export default function RegisterPage(){
     const [ componentPage, setComponentPage ] = useState<0 | 1>(0)
-    
+    const [ submitIsSuccessful, setSubmitIsSuccessful ] = useState(false)
+
     return(
-        <div>
+        <div className="min-h-screen flex flex-col">
             <Header authPage />
-            {/* {componentPage === 0 ? 
+            {!submitIsSuccessful && (componentPage === 0 ? 
                 <RegisterOfficeForm1 setComponentPage={setComponentPage} /> : 
-                <RegisterOfficeForm2 setComponentPage={setComponentPage} />
-            } */}
-            <RegisterComplete />
+                <RegisterOfficeForm2 setComponentPage={setComponentPage} setSubmitIsSuccessful={setSubmitIsSuccessful} />)
+            }
+            {submitIsSuccessful && <RegisterComplete />}
         </div>
     )
 }

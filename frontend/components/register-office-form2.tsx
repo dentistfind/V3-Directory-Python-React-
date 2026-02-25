@@ -8,7 +8,7 @@ import File from "./ui/svg/file";
 import Upload from "./ui/svg/upload";
 import { useOfficeContext } from "@/context/OfficeContext";
 
-export default function RegisterOfficeForm2({ setComponentPage }:{ setComponentPage: Dispatch<SetStateAction<0 | 1>> }){
+export default function RegisterOfficeForm2({ setComponentPage, setSubmitIsSuccessful }:{ setComponentPage: Dispatch<SetStateAction<0 | 1>>, setSubmitIsSuccessful: Dispatch<SetStateAction<boolean>> }){
     useEffect(() => { 
         window.scrollTo({
             top: 0,
@@ -31,8 +31,14 @@ export default function RegisterOfficeForm2({ setComponentPage }:{ setComponentP
             licenseDocumentSrc: officeVerData.licenseDocumentSrc.trim().length === 0
         }
 
+        const isInvalidFlag = Object.values(newIsInvalid).some(Boolean)
+
         setIsInvalid(newIsInvalid)
-        setHasInvalidField(Object.values(newIsInvalid).some(Boolean))
+        setHasInvalidField(isInvalidFlag)
+
+        if (!isInvalidFlag){
+            setSubmitIsSuccessful(true)
+        }
     }
     return(
         <div className="px-20 py-10 bg-white text-black space-y-5">
