@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { OfficeProvider } from "@/context/OfficeContext";
+import { DirectoryProvider } from "@/context/DirectoryContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
         className={`${poppins.className} antialiased`}
       >
         <OfficeProvider>
-          {children}
+          <DirectoryProvider>
+            {children}
+          </DirectoryProvider>
         </OfficeProvider>
       </body>
     </html>

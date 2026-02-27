@@ -5,6 +5,8 @@ import { useState } from "react";
 import { LoginData } from "@/lib/interface";
 import Button from "./ui/button";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import Link from "next/link";
+import { DIRECTORY_PORTAL_URL, HOME_PAGE_URL } from "@/lib/routes";
 
 export default function LoginForm(){
     const [ loginInput, setLoginInput ] = useState<LoginData>({ email: "", password: "" })
@@ -33,7 +35,7 @@ export default function LoginForm(){
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </div>
                     </div>
-                    <Button fill text="Log In" className="w-full text-center" />
+                    <Link href={`${DIRECTORY_PORTAL_URL}/1234`}><Button fill text="Log In" className="w-full text-center" /></Link>
                 </div>
             </div>
         </div>

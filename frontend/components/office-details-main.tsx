@@ -8,6 +8,7 @@ import Button from "./ui/button";
 import { GoogleMapsEmbed } from "@next/third-parties/google";
 import { FaPhone } from "react-icons/fa6";
 import ReviewCard from "./ui/review-card";
+import { printAddress } from "@/lib/script";
 
 export default function OfficeDetailsMain({ officeData }: { officeData: OfficeData}){
     const { officeName, address, website, mobileNumber, email, galleryMedia, reviews } = officeData
@@ -106,12 +107,12 @@ export default function OfficeDetailsMain({ officeData }: { officeData: OfficeDa
                             height={200}
                             width="100%"
                             mode="place"
-                            q={officeData.address}
+                            q={printAddress(officeData.address)}
                         />
                     </div>
                     <div className="text-sm space-y-3">
                         <h3 className="font-semibold">{officeName}</h3>
-                        <div>{address}</div>
+                        <div>{printAddress(address)}</div>
                         {mobileNumber && <div className="flex items-center"><FaPhone />{mobileNumber}</div>}
                         {email && <div>{email}</div>}
                         {website && (

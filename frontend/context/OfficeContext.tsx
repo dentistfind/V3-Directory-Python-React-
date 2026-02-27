@@ -7,7 +7,7 @@ const OfficeContext = createContext<any>(undefined)
 
 
 export const OfficeProvider = ({ children }: any) => {
-    const [ location, setLocation ] = useState<Location>({city: "Toronto", country: "Canada"})
+    const [ location, setLocation ] = useState<Location>({city: "Toronto", state :"Toronto", country: "Canada"})
     const [ officeData, setOfficeData ] = useState<OfficeData>(initialOfficeData)
     const [ addressData, setAddressData ] = useState<AddressData>({ street: "", city: "", state: "", zip: "" })
     const [ servicesOffered, setServicesOffered ] = useState<string>()

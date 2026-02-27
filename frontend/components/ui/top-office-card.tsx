@@ -10,7 +10,7 @@ import Link from "next/link";
 import { TOP_OFFICES_URL } from "@/lib/routes";
 
 export default function TopOfficeCard({ officeCard }:{ officeCard: OfficeData }){
-    const { id, name, logoUrl, rating, reviewCount, address, isAvailable, website, isSponsored, videoUrl: { videoSrc, videoThumbnail } } = officeCard
+    const { id, officeName, logoUrl, rating, reviewCount, address, isAvailable, website, isSponsored, videoUrl: { videoSrc, videoThumbnail } } = officeCard
 
     const [ openModal, setOpenModal ] = useState(false);
     
@@ -28,11 +28,11 @@ export default function TopOfficeCard({ officeCard }:{ officeCard: OfficeData })
                 <div className="w-1/2">
                     <div className="flex items-center gap-3">
                         {logoUrl && (<div className="p-3 border border-gray-300 rounded-full">
-                            <Image src={logoUrl} width={50} height={50} className="flex items-center justify-center rounded-full" alt={name} />
+                            <Image src={logoUrl} width={50} height={50} className="flex items-center justify-center rounded-full" alt={officeName} />
                         </div>)}
                         <div>
                             {isSponsored && <div className="text-xs p-1 bg-gray-100 rounded-md w-fit">Sponsored</div>}
-                            <Link href={`${TOP_OFFICES_URL}/${id}`}><h3 className="font-semibold text-lg">{name}</h3></Link>
+                            <Link href={`${TOP_OFFICES_URL}/${id}`}><h3 className="font-semibold text-lg">{officeName}</h3></Link>
                             <div className="flex items-center gap-2">
                                 <StarRatings
                                     rating={rating}

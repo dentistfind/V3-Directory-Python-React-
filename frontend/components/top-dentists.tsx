@@ -6,7 +6,7 @@ import VideoCard from "./ui/video-card";
 import { GoogleMapsEmbed } from '@next/third-parties/google'
 import Button from "./ui/button";
 
-const MAIN_VIDEO_URL = "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770990330/DentistFind_Spotlight_Home_Page_Video_-_v2_qr1s0w.mp4"
+const MAIN_VIDEO_URL = "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1772019607/SxZYEu_gxtqja.mp4"
 
 export default function TopDentists({ location } : { location: Location }){
     const [ mainVideoData, setMainVideoData ] = useState<VideoCardData>({

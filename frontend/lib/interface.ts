@@ -1,5 +1,8 @@
 export interface Location {
+    street?: string,
+    postalCode?: string,
     city: string,
+    state: string,
     country: string
 }
 
@@ -35,7 +38,7 @@ export interface OfficeData {
     id: string,
     officeName: string,
     ownerName: string,
-    address: string,
+    address: Location,
     mobileNumber?: string,
     email?: string,
     description?: string,
@@ -51,7 +54,8 @@ export interface OfficeData {
         videoUrl?: VideoCardData,
         imageUrl?: string
     }[],
-    reviews?: ReviewData[]
+    reviews?: ReviewData[],
+    createdAt: Date
 }
 
 export interface OfficeVerificationData {
@@ -93,4 +97,22 @@ export interface AddressData {
 export interface LoginData {
     email: string,
     password: string
+}
+
+export interface DirectoryUser {
+    id: string,
+    name: string,
+    profileSrc?: string
+}
+
+export interface DashboardCardProp {
+    title: string,
+    content: string | number,
+    icon?: React.ReactNode
+}
+
+export interface DirectoryPortalDashboardStat {
+    totalOffices: number,
+    activeOffices: number,
+    pendingOfficeRequests: number
 }
