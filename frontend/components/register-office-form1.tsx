@@ -4,7 +4,7 @@ import Input from "./ui/input";
 import RegisterHeader from "./ui/register-header";
 import Button from "./ui/button";
 import { useOfficeContext } from "@/context/OfficeContext";
-import { AddressData, OfficeData } from "@/lib/interface";
+import { OfficeData } from "@/lib/interface";
 
 export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentPage: Dispatch<SetStateAction<0 | 1>> }){
     useEffect(() => { 
@@ -14,18 +14,13 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
         })
     }, [])
 
-    const { officeData, setOfficeData, addressData, setAddressData, servicesOffered, setServicesOffered } = useOfficeContext()
+    const { officeData, setOfficeData } = useOfficeContext()
 
     const [ isInvalid, setIsInvalid ] = useState({ officeName: false, ownerName: false, email: false, mobileNumber: false })
     const [ hasInvalidField, setHasInvalidField ] = useState(false)
 
-    useEffect(() => {
-        const { street, city, state, zip } = addressData
-        setOfficeData((prev: OfficeData) => ({...prev, address: `${street}, ${city}, ${state}. ${zip}`}))
-    }, [addressData])
-
     const handleNextSteps = () => {
-        const newIsInvalid = { 
+        const newIsInvalid = {
             officeName: officeData.officeName.trim().length === 0, 
             ownerName: officeData.ownerName.trim().length === 0,
             email: officeData.email?.trim().length === 0,
@@ -75,24 +70,24 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                         />
                     </div>
                     <Input 
-                        value={addressData.street} 
-                        onChange={(e) => setAddressData((prev: AddressData) => ({...prev, street: e.target.value}))} 
+                        value={officeData.address.street} 
+                        onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, street: e.target.value}}))} 
                         title="Street Address" placeholder="123 Main Street" 
                     />
                     <div className="flex items-center gap-5">
                         <Input 
-                            value={addressData.city} 
-                            onChange={(e) => setAddressData((prev: AddressData) => ({...prev, city: e.target.value}))} 
+                            value={officeData.address.city} 
+                            onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, city: e.target.value}}))} 
                             title="City" placeholder="New York" 
                         />
                         <Input 
-                            value={addressData.state} 
-                            onChange={(e) => setAddressData((prev: AddressData) => ({...prev, state: e.target.value}))} 
+                            value={officeData.address.state} 
+                            onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, state: e.target.value}}))} 
                             title="State" placeholder="NY" 
                         />
                         <Input 
-                            value={addressData.zip} 
-                            onChange={(e) => setAddressData((prev: AddressData) => ({...prev, zip: e.target.value}))} 
+                            value={officeData.address.postalCode} 
+                            onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, postalCode: e.target.value}}))} 
                             title="Zip Code" placeholder="10001" 
                         />
                     </div>
@@ -107,8 +102,8 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                     <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
                         <p className="absolute -top-2 bg-white px-1">Services Offered</p>
                         <textarea 
-                            onChange={(e) => setServicesOffered(e.target.value)} 
-                            value={servicesOffered} maxLength={100} rows={3}
+                            onChange={(e) => setOfficeData((prev: OfficeData) => ({...prev, servicesOffered: e.target.value}))} 
+                            value={officeData.servicesOffered} maxLength={100} rows={3}
                             className="w-full h-full outline-0 resize-none" placeholder={"General Dentistry, Cosmetic Dentistry, Orthodontics..."} 
                         />
                     </div>

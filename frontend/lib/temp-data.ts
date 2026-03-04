@@ -1,5 +1,6 @@
 import { OfficeReviewsSet1, OfficeReviewsSet2, OfficeReviewsSet3, OfficeReviewsSet4, OfficeReviewsSet5, OfficeReviewsSet6, OfficeReviewsSet7, SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3, } from "./constants";
-import { DirectoryUser, OfficeData, OfficeVerificationData } from "./interface";
+import { DirectoryUser, OfficeData, OfficeRequests, OfficeVerificationData } from "./interface";
+import { makeVideo } from "./script";
 
 export const dummyOffices: OfficeData[] = [
   {
@@ -60,7 +61,15 @@ export const dummyOffices: OfficeData[] = [
         videoUrl: SPOTLIGHT_VIDEO3
       }
     ],
-    reviews: OfficeReviewsSet1
+    reviews: OfficeReviewsSet1,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "8634d7ca-3971-482f-a125-89e11ba01832",
@@ -117,7 +126,15 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       }
     ],
-    reviews: OfficeReviewsSet2
+    reviews: OfficeReviewsSet2,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "e44c9c7a-0b38-4486-9992-306212b8a437",
@@ -151,7 +168,15 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       }
     ],
-    reviews: OfficeReviewsSet3
+    reviews: OfficeReviewsSet3,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "fdb937aa-6b9b-4f27-8fbe-6ded724548cd",
@@ -183,7 +208,15 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       }
     ],
-    reviews: OfficeReviewsSet4
+    reviews: OfficeReviewsSet4,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "b1d7224a-7369-4c09-899e-9f4d5f9006bd",
@@ -216,7 +249,15 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       }
     ],
-    reviews: OfficeReviewsSet5
+    reviews: OfficeReviewsSet5,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "ee1d74a2-7eb1-479c-bab7-ba9add179869",
@@ -250,7 +291,15 @@ export const dummyOffices: OfficeData[] = [
         videoUrl: SPOTLIGHT_VIDEO3
       }
     ],
-    reviews: OfficeReviewsSet6
+    reviews: OfficeReviewsSet6,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "e3ac57df-d609-41f1-a3db-9439cafd70da",
@@ -283,7 +332,15 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       },
     ],
-    reviews: OfficeReviewsSet7
+    reviews: OfficeReviewsSet7,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
   {
     id: "9fcfd215-fff8-42b7-aebc-ffebf98a4b0d",
@@ -317,12 +374,26 @@ export const dummyOffices: OfficeData[] = [
         imageUrl: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVudGlzdHxlbnwwfHwwfHx8MA%3D%3D"
       }
     ],
-    reviews: OfficeReviewsSet3
+    reviews: OfficeReviewsSet3,
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 ].map((office, index) => ({
+  ...office,
+  metaInfo: {
+    urlSlug: "",
+    title: "",
+    keywords: `${office.officeName.toLowerCase()}, dentist, dental clinic`,
+    description: `${office.officeName} is a trusted dental clinic located in ${office.address.city}.`
+  },
   createdAt: new Date(2025, 0, index + 1),
-  ...office
-}));
+}))
 
 export const initialOfficeData: OfficeData = {
   id: "",
@@ -352,7 +423,20 @@ export const initialOfficeData: OfficeData = {
   },
   galleryMedia: [],
   reviews: [],
-  createdAt: new Date()
+  createdAt: new Date(),
+  verificationData: {
+    licenseDocumentSrc: "",
+    licenseNumber: "",
+    taxId: "",
+    liabilityInsuranceSrc: ""
+  },
+  metaInfo: {
+    urlSlug: "",
+    title: "",
+    description: "",
+    keywords: "",
+    graphImageUrl: ""
+  }
 }
 
 export const initialOfficeVerData: OfficeVerificationData = {
@@ -370,7 +454,7 @@ export const dummyDirectoryUser: DirectoryUser[] = [
   }
 ]
 
-export const dummyDentalOffices: OfficeData[] = [
+export const dummyDentalOffices: OfficeData[]= [
   {
     id: "1",
     officeName: "BrightSmile Dental Studio",
@@ -409,7 +493,15 @@ export const dummyDentalOffices: OfficeData[] = [
         createdAt: new Date("2025-01-10"),
         likeCount: 12
       }
-    ]
+    ],
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -435,7 +527,15 @@ export const dummyDentalOffices: OfficeData[] = [
       videoSrc: "https://example.com/videos/office2.mp4",
       videoThumbnail: "https://picsum.photos/300?2",
       duration: "2:10"
-    }
+    },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -452,7 +552,15 @@ export const dummyDentalOffices: OfficeData[] = [
     rating: 4.9,
     reviewCount: "210",
     isAvailable: false,
-    videoUrl: { videoSrc: "https://example.com/videos/office3.mp4", duration: "1:20" }
+    videoUrl: { videoSrc: "https://example.com/videos/office3.mp4", duration: "1:20" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -469,7 +577,15 @@ export const dummyDentalOffices: OfficeData[] = [
     rating: 4.7,
     reviewCount: "156",
     isAvailable: true,
-    videoUrl: { videoSrc: "https://example.com/videos/office4.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office4.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -486,7 +602,15 @@ export const dummyDentalOffices: OfficeData[] = [
     rating: 4.5,
     reviewCount: "87",
     isAvailable: true,
-    videoUrl: { videoSrc: "https://example.com/videos/office5.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office5.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -502,7 +626,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.8,
     reviewCount: "134",
-    videoUrl: { videoSrc: "https://example.com/videos/office6.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office6.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -518,7 +650,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.4,
     reviewCount: "65",
-    videoUrl: { videoSrc: "https://example.com/videos/office7.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office7.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -535,7 +675,15 @@ export const dummyDentalOffices: OfficeData[] = [
     rating: 4.9,
     reviewCount: "201",
     isSponsored: true,
-    videoUrl: { videoSrc: "https://example.com/videos/office8.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office8.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -551,7 +699,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.3,
     reviewCount: "72",
-    videoUrl: { videoSrc: "https://example.com/videos/office9.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office9.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -567,7 +723,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.7,
     reviewCount: "143",
-    videoUrl: { videoSrc: "https://example.com/videos/office10.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office10.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -583,7 +747,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.6,
     reviewCount: "109",
-    videoUrl: { videoSrc: "https://example.com/videos/office11.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office11.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -599,7 +771,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.8,
     reviewCount: "176",
-    videoUrl: { videoSrc: "https://example.com/videos/office12.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office12.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -615,7 +795,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.5,
     reviewCount: "94",
-    videoUrl: { videoSrc: "https://example.com/videos/office13.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office13.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -631,7 +819,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.6,
     reviewCount: "121",
-    videoUrl: { videoSrc: "https://example.com/videos/office14.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office14.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -647,7 +843,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.9,
     reviewCount: "302",
-    videoUrl: { videoSrc: "https://example.com/videos/office15.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office15.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -663,7 +867,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.7,
     reviewCount: "88",
-    videoUrl: { videoSrc: "https://example.com/videos/office16.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office16.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -679,7 +891,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.4,
     reviewCount: "67",
-    videoUrl: { videoSrc: "https://example.com/videos/office17.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office17.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -695,7 +915,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.6,
     reviewCount: "139",
-    videoUrl: { videoSrc: "https://example.com/videos/office18.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office18.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -711,7 +939,15 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.8,
     reviewCount: "158",
-    videoUrl: { videoSrc: "https://example.com/videos/office19.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office19.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   },
 
   {
@@ -727,13 +963,266 @@ export const dummyDentalOffices: OfficeData[] = [
     },
     rating: 4.5,
     reviewCount: "112",
-    videoUrl: { videoSrc: "https://example.com/videos/office20.mp4" }
+    videoUrl: { videoSrc: "https://example.com/videos/office20.mp4" },
+    verificationData: {
+      licenseNumber: "DDS-CA-458921",
+      taxId: "94-3456782",
+      licenseDocumentSrc: "https://example.com/docs/license.pdf",
+      liabilityInsuranceSrc: "https://example.com/docs/insurance.pdf",
+      isVerified: true,
+      verifiedAt: new Date("2024-01-15")
+    },
   }
 ].map((office, index) => ({
-  mobileNumber: office.mobileNumber ?? `555-100-00${(index + 1)
-    .toString()
-    .padStart(2, "0")}`,
-  email: office.email ?? `info${index + 1}@dentaloffice.com`,
+  ...office,
+  metaInfo: {
+    urlSlug: "",
+    title: "",
+    keywords: `${office.officeName.toLowerCase()}, dentist, dental clinic`,
+    description: `${office.officeName} is a trusted dental clinic located in ${office.address.city}.`
+  },
+
   createdAt: new Date(2025, 0, index + 1),
-  ...office
-}));
+}))
+
+export const dentalOfficeRequests: OfficeRequests[] = [
+  {
+    id: "b2e4d7f3-2222-4c64-8ea9-222222222222",
+    officeName: "PearlCare Family Dentistry",
+    ownerName: "Dr. Fatima Bello",
+
+    address: {
+      street: "45 Aba Road",
+      city: "Port Harcourt",
+      state: "Rivers",
+      country: "Nigeria",
+      postalCode: "500272"
+    },
+
+    mobileNumber: "+2348098765432",
+    email: "contact@pearlcare.ng",
+
+    description: "Family-focused dental clinic with pediatric specialists.",
+    servicesOffered: "Pediatric Dentistry, Braces, Routine Checkups",
+
+    rating: 4.4,
+    reviewCount: "58",
+
+    isAvailable: false,
+    isSponsored: false,
+
+    website: "https://pearlcare.ng",
+
+    videoUrl: {
+      videoSrc: "https://example.com/videos/pearlcare.mp4",
+      videoThumbnail: "/thumbnails/pearlcare.jpg",
+      duration: "3:10",
+      spotlight: false
+    },
+
+    galleryMedia: [
+      {
+        isVideo: false,
+        imageUrl: "/gallery/pearlcare-1.jpg"
+      }
+    ],
+
+    metaInfo: {
+      urlSlug: "pearlcare-dentistry-portharcourt",
+      title: "PearlCare Family Dentistry - Port Harcourt",
+      description: "Trusted family dental clinic in Port Harcourt.",
+      keywords: "dentist port harcourt, pediatric dentist nigeria",
+      graphImageUrl: "/meta/pearlcare-og.jpg"
+    },
+
+    verificationData: {
+      licenseNumber: "DDS-RIV-884211",
+      taxId: "NG-11223344",
+      licenseDocumentSrc: "/docs/pearlcare-license.pdf",
+      liabilityInsuranceSrc: "/docs/pearlcare-insurance.pdf"
+    },
+
+    reviews: [
+      {
+        author: "Ifeoma K.",
+        content: "My kids love coming here.",
+        createdAt: new Date("2025-02-15"),
+        likeCount: 4
+      }
+    ],
+
+    createdAt: new Date("2025-02-01"),
+    status: "Pending"
+  },
+
+  {
+    id: "c3a9f8d1-3333-4c64-8ea9-333333333333",
+    officeName: "UrbanWhite Cosmetic Dentistry",
+    ownerName: "Dr. Michael Okoro",
+
+    address: {
+      street: "78 Aminu Kano Crescent",
+      city: "Abuja",
+      state: "FCT",
+      country: "Nigeria",
+      postalCode: "900271"
+    },
+
+    mobileNumber: "+2348034567890",
+    email: "info@urbanwhite.ng",
+
+    description: "Cosmetic dental specialists focused on smile makeovers.",
+    servicesOffered: "Veneers, Smile Makeovers, Teeth Whitening",
+
+    rating: 3.9,
+    reviewCount: "21",
+
+    isAvailable: true,
+    isSponsored: false,
+
+    website: "https://urbanwhite.ng",
+
+    videoUrl: {
+      videoSrc: "https://example.com/videos/urbanwhite.mp4",
+      videoThumbnail: "/thumbnails/urbanwhite.jpg",
+      duration: "2:15",
+      spotlight: false
+    },
+
+    metaInfo: {
+      urlSlug: "urbanwhite-cosmetic-abuja",
+      title: "UrbanWhite Cosmetic Dentistry Abuja",
+      description: "Affordable cosmetic dentistry solutions in Abuja.",
+      keywords: "cosmetic dentist abuja, veneers nigeria",
+      graphImageUrl: "/meta/urbanwhite-og.jpg"
+    },
+
+    verificationData: {
+      licenseNumber: "DDS-FCT-662211",
+      taxId: "NG-55667788",
+      licenseDocumentSrc: "/docs/urbanwhite-license.pdf",
+      liabilityInsuranceSrc: "/docs/urbanwhite-insurance.pdf"
+    },
+
+    reviews: [],
+
+    createdAt: new Date("2025-02-20"),
+    status: "Rejected"
+  },
+  {
+    id: "d4f6a7b8-4444-4c64-8ea9-444444444444",
+    officeName: "EliteCare Dental Hub",
+    ownerName: "Dr. Grace Nwosu",
+
+    address: {
+      street: "22 Ikorodu Road",
+      city: "Ikeja",
+      state: "Lagos",
+      country: "Nigeria",
+      postalCode: "100281"
+    },
+
+    mobileNumber: "+2348123456789",
+    email: "hello@elitecare.ng",
+
+    description: "Advanced dental technology and orthodontic solutions.",
+    servicesOffered: "Braces, Implants, Surgery, Whitening",
+
+    rating: 4.6,
+    reviewCount: "89",
+
+    isAvailable: true,
+    isSponsored: true,
+
+    website: "https://elitecare.ng",
+
+    videoUrl: {
+      videoSrc: "https://example.com/videos/elitecare.mp4",
+      videoThumbnail: "/thumbnails/elitecare.jpg",
+      duration: "2:58",
+      spotlight: true
+    },
+
+    metaInfo: {
+      urlSlug: "elitecare-dental-ikeja",
+      title: "EliteCare Dental Hub Ikeja",
+      description: "Premium orthodontic and surgical dental services.",
+      keywords: "dentist ikeja, braces lagos, implants nigeria",
+      graphImageUrl: "/meta/elitecare-og.jpg"
+    },
+
+    verificationData: {
+      licenseNumber: "DDS-LAG-998877",
+      taxId: "NG-66778899",
+      licenseDocumentSrc: "/docs/elitecare-license.pdf",
+      liabilityInsuranceSrc: "/docs/elitecare-insurance.pdf"
+    },
+
+    reviews: [
+      {
+        author: "Samuel T.",
+        content: "Very modern equipment and friendly staff.",
+        createdAt: new Date("2025-02-22"),
+        likeCount: 9
+      }
+    ],
+
+    createdAt: new Date("2025-02-18"),
+    status: "Approved"
+  },
+
+  {
+    id: "e5c7d8f9-5555-4c64-8ea9-555555555555",
+    officeName: "RoyalTeeth Dental Clinic",
+    ownerName: "Dr. Emeka Ibe",
+
+    address: {
+      street: "14 Okpara Avenue",
+      city: "Enugu",
+      state: "Enugu",
+      country: "Nigeria",
+      postalCode: "400102"
+    },
+
+    mobileNumber: "+2348076543210",
+    email: "admin@royalteeth.ng",
+
+    description: "Comprehensive dental care for adults and children.",
+    servicesOffered: "Checkups, Fillings, Crowns, Whitening",
+
+    rating: 4.2,
+    reviewCount: "41",
+
+    isAvailable: true,
+    isSponsored: false,
+
+    website: "https://royalteeth.ng",
+
+    videoUrl: {
+      videoSrc: "https://example.com/videos/royalteeth.mp4",
+      videoThumbnail: "/thumbnails/royalteeth.jpg",
+      duration: "1:50",
+      spotlight: false
+    },
+
+    metaInfo: {
+      urlSlug: "royalteeth-enugu",
+      title: "RoyalTeeth Dental Clinic Enugu",
+      description: "Reliable and affordable dental clinic in Enugu.",
+      keywords: "dentist enugu, dental clinic nigeria",
+      graphImageUrl: "/meta/royalteeth-og.jpg"
+    },
+
+    verificationData: {
+      licenseNumber: "DDS-ENU-445566",
+      taxId: "NG-33445566",
+      licenseDocumentSrc: "/docs/royalteeth-license.pdf",
+      liabilityInsuranceSrc: "/docs/royalteeth-insurance.pdf"
+    },
+
+    reviews: [],
+
+    createdAt: new Date("2025-02-25"),
+    status: "Pending"
+  }
+];

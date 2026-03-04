@@ -1,13 +1,8 @@
 import DirectoryPage from "@/pages/DirectoryPage"
-
-export interface PageProps {
-    params: {
-        id: string
-    }
-}
+import { PageProps } from "@/lib/interface"
 
 export default async function Page({ params }: PageProps){
     const { id } = await params
     
-    return <DirectoryPage id={id} />
+    return <DirectoryPage id={id} category="Reviews" />
 }

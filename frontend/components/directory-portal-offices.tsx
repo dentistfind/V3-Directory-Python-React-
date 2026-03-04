@@ -5,14 +5,24 @@ import { OfficeData } from "@/lib/interface";
 import { dummyDentalOffices } from "@/lib/temp-data";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { DIRECTORY_PORTAL_ADD_OFFICE } from "@/lib/routes";
+import { DirectoryStatusDisplay } from "@/lib/type";
+import { useDirectoryContext } from "@/context/DirectoryContext";
 
-type StatusDisplay = "All" | "Active" | "Inactive"
 
-export default function DirectoryPortalOffices(){
+
+export default function DirectoryPortalOffices({ userId }: { userId: string }){
+    const router = useRouter()
     const [ showStatusDropdown, setShowStatusDropdown ] = useState(false)
     const [ directoryOffices, setDirectoryOffices ] = useState<OfficeData[]>([...dummyDentalOffices])
     const [ inputSearch, setInputSearch ] = useState("")
-    const [ statusDisplay, setStatusDisplay ] = useState<StatusDisplay>("All")
+    const [ statusDisplay, setStatusDisplay ] = useState<DirectoryStatusDisplay>("All")
+    const { setDirectoryPortalCategory } = useDirectoryContext()
+
+    useEffect(() => {
+        setDirectoryPortalCategory("Offices")
+    }, [])
 
     useEffect(() => {
         setDirectoryOffices([...dummyDentalOffices].filter(item => item.officeName.toLowerCase().includes(inputSearch) || item.email?.toLowerCase().includes(inputSearch) || item.ownerName.toLowerCase().includes(inputSearch) || item.mobileNumber?.toLowerCase().includes(inputSearch) || item.address.city.toLowerCase().includes(inputSearch) || item.address.country.toLowerCase().includes(inputSearch)))
@@ -23,6 +33,11 @@ export default function DirectoryPortalOffices(){
         setDirectoryOffices([...dummyDentalOffices].filter(item => (statusDisplay === "Active") ? item.isAvailable : (statusDisplay === "Inactive") && !item.isAvailable ))
     }, [statusDisplay])
 
+    const handleAddNewOfficeButton = () => {
+        const officeId = crypto.randomUUID()
+        router.push(DIRECTORY_PORTAL_ADD_OFFICE(userId, officeId))
+    }
+
     return(
         <div className="flex-1 min-h-screen p-5 space-y-7">
             <div className="flex items-center justify-between">
@@ -30,7 +45,7 @@ export default function DirectoryPortalOffices(){
                     <h2 className="font-semibold text-xl">Office Management</h2>
                     <p className="text-sm font-light">Create and manage dental office listings</p>
                 </div>
-                <Button fill text="+ Add Office" className="w-fit rounded-md" />
+                <div onClick={handleAddNewOfficeButton}><Button fill text="+ Add Office" className="w-fit rounded-md" /></div>
             </div>
             <div className="rounded-lg p-5 border border-gray-300 mt-5">
                 <div className="text-lg flex justify-between items-center">
@@ -43,7 +58,7 @@ export default function DirectoryPortalOffices(){
                         <div className="relative w-32">
                             <p className="absolute -top-2 bg-white px-1 text-gray-500">Status</p>
                             <div onClick={() => setShowStatusDropdown(prev => !prev)} className="flex items-center justify-between cursor-pointer">
-                                <p>All</p>
+                                <p>{statusDisplay}</p>
                                 {showStatusDropdown ? <FaChevronUp /> : <FaChevronDown />}
                             </div>
                             {showStatusDropdown && <div 

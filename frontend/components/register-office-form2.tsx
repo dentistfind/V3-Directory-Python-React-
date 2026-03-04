@@ -2,7 +2,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Button from "./ui/button";
 import RegisterHeader from "./ui/register-header";
-import { OfficeVerificationData } from "@/lib/interface";
+import { OfficeData, OfficeVerificationData } from "@/lib/interface";
 import Input from "./ui/input";
 import File from "./ui/svg/file";
 import Upload from "./ui/svg/upload";
@@ -16,7 +16,7 @@ export default function RegisterOfficeForm2({ setComponentPage, setSubmitIsSucce
         }) 
     }, [])
 
-    const { officeVerData, setOfficeVerData } = useOfficeContext()
+    const { officeData, setOfficeData } = useOfficeContext()
 
     const [ isInvalid, setIsInvalid ] = useState({ licenseNumber: false, licenseDocumentSrc: false })
     const [ hasInvalidField, setHasInvalidField ] = useState(false)
@@ -27,8 +27,8 @@ export default function RegisterOfficeForm2({ setComponentPage, setSubmitIsSucce
 
     const handleSubmit = () => {
         const newIsInvalid = { 
-            licenseNumber: officeVerData.licenseNumber.trim().length === 0, 
-            licenseDocumentSrc: officeVerData.licenseDocumentSrc.trim().length === 0
+            licenseNumber: officeData.verificationData?.licenseNumber?.trim().length === 0, 
+            licenseDocumentSrc: officeData.verificationData?.licenseDocumentSrc?.trim().length === 0
         }
 
         const isInvalidFlag = Object.values(newIsInvalid).some(Boolean)
@@ -50,13 +50,21 @@ export default function RegisterOfficeForm2({ setComponentPage, setSubmitIsSucce
                         <p className="font-light text-gray-400 text-xs">Upload your credentials and documentation for verification</p>
                     </div>
                     <Input
-                        value={officeVerData.licenseNumber} isInvalid={isInvalid.licenseNumber}
-                        onChange={(e) => setOfficeVerData((prev: OfficeVerificationData) => ({...prev, licenseNumber: e.target.value}))} 
+                        value={officeData.verificationData?.licenseNumber} isInvalid={isInvalid.licenseNumber}
+                        onChange={(e) => 
+                            setOfficeData(prev => ({
+                                ...prev, 
+                                verificationData: {
+                                    ...prev.verificationData, 
+                                    licenseNumber: e.target.value
+                                }
+                            }))
+                        } 
                         title="Medical License Number *" placeholder="Enter your license number"
                     />
                     <Input
-                        value={officeVerData.taxId}
-                        onChange={(e) => setOfficeVerData((prev: OfficeVerificationData) => ({...prev, taxId: e.target.value}))} 
+                        value={officeData.verificationData?.taxId} isInvalid={isInvalid.licenseNumber}
+                        onChange={(e) => setOfficeData(prev => ({...prev, verificationData: {...prev.verificationData, taxId: e.target.value}}))} 
                         title="Tax ID / EIN" placeholder="XX-XXXXXXX"
                     />
                     <div className="w-full relative border-2 border-dashed border-gray-200 rounded-md p-3 text-xs">

@@ -1,14 +1,20 @@
 "use client"
-import { DirectoryPortalDashboardStat, OfficeData } from "@/lib/interface"
-import { dummyDentalOffices, dummyOffices } from "@/lib/temp-data"
+import { DirectoryPortalDashboardStat, OfficeData, OfficeRequests } from "@/lib/interface"
+import { dentalOfficeRequests, dummyDentalOffices, dummyOffices } from "@/lib/temp-data"
 import { useEffect, useState } from "react"
 import DashboardCard from "./ui/dashboard-card"
 import { PiBuildingOfficeLight } from "react-icons/pi";
+import { useDirectoryContext } from "@/context/DirectoryContext"
 
 export default function DirectoryPortalDashboard(){
-    const [ dashboardStats, setDashboardStats ] = useState<DirectoryPortalDashboardStat>({ totalOffices: 0, activeOffices: 0, pendingOfficeRequests: 0 })
     const [ directoryOffices, setDirectoryOffices ] = useState<OfficeData[]>([...dummyDentalOffices])
-    const [ officeRequests, setOfficeRequests ] = useState<OfficeData[]>([...dummyOffices])
+    const [ officeRequests, setOfficeRequests ] = useState<OfficeRequests[]>([...dentalOfficeRequests])
+    const [ dashboardStats, setDashboardStats ] = useState<DirectoryPortalDashboardStat>({ totalOffices: 0, activeOffices: 0, pendingOfficeRequests: 0 })
+    const { setDirectoryPortalCategory } = useDirectoryContext()
+
+    useEffect(() => {
+        setDirectoryPortalCategory("Dashboard")
+    }, [])
 
     useEffect(() => {
         const totalOffices = [...dummyDentalOffices].length

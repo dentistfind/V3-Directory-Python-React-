@@ -6,6 +6,7 @@ import StarRatings from "react-star-ratings";
 import Input from "./input";
 import { useState } from "react";
 import Button from "./button";
+import { printAddress } from "@/lib/script";
 
 interface AppointmentRequestModalProps extends ModalProps {
     officeData: OfficeData
@@ -14,7 +15,7 @@ interface AppointmentRequestModalProps extends ModalProps {
 export default function AppointmentRequestModal({ isOpen, onClose, officeData }: AppointmentRequestModalProps){
     if (!isOpen) return null
 
-    const { name, logoUrl, rating, reviewCount, address } = officeData
+    const { officeName, logoUrl, rating, reviewCount, address } = officeData
 
     const [ requestInput, setRequestInput ] = useState<RequestAppointmentData>({
         fullName: "",
@@ -45,10 +46,10 @@ export default function AppointmentRequestModal({ isOpen, onClose, officeData }:
                 </div>
                 <div className="flex items-center gap-3">
                     {logoUrl && (<div className="p-2 border border-gray-300 rounded-full">
-                        <Image src={logoUrl} width={30} height={30} className="flex items-center justify-center rounded-full" alt={name} />
+                        <Image src={logoUrl} width={30} height={30} className="flex items-center justify-center rounded-full" alt={officeName} />
                     </div>)}
                     <div>
-                        <h3 className="font-semibold">{name}</h3>
+                        <h3 className="font-semibold">{officeName}</h3>
                         <div className="flex items-center gap-2">
                             <StarRatings
                                 rating={rating}
@@ -60,7 +61,7 @@ export default function AppointmentRequestModal({ isOpen, onClose, officeData }:
                             />
                             <p className="text-xs font-semibold">{rating} • {reviewCount} reviews</p>
                         </div>
-                        <div className="text-xs flex items-center gap-1 font-semibold"><CiLocationOn /> {address}</div>
+                        <div className="text-xs flex items-center gap-1 font-semibold"><CiLocationOn /> {printAddress(address)}</div>
                     </div>
                 </div>
                 <div className="mt-7 space-y-5">

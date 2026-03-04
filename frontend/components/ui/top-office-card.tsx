@@ -8,6 +8,7 @@ import { useState } from "react";
 import AppointmentRequestModal from "./appointment-request-modal";
 import Link from "next/link";
 import { TOP_OFFICES_URL } from "@/lib/routes";
+import { printAddress } from "@/lib/script";
 
 export default function TopOfficeCard({ officeCard }:{ officeCard: OfficeData }){
     const { id, officeName, logoUrl, rating, reviewCount, address, isAvailable, website, isSponsored, videoUrl: { videoSrc, videoThumbnail } } = officeCard
@@ -52,7 +53,7 @@ export default function TopOfficeCard({ officeCard }:{ officeCard: OfficeData })
                 </div>
                 <div className="w-1/2 text-xs flex flex-col justify-between pt-20 pb-5">
                     <div className="space-y-5">
-                        <div className="flex items-center gap-1 font-semibold"><CiLocationOn /> {address}</div>
+                        <div className="flex items-center gap-1 font-semibold"><CiLocationOn /> {printAddress(address)}</div>
                         {isAvailable && <div className="text-theme font-semibold">• Available</div>}
                         {website && (
                             <div className="flex items-center gap-1">

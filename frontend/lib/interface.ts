@@ -1,3 +1,12 @@
+import { IconType } from "react-icons/lib";
+import { DirectoryPortalCategoryType, OfficeRequestStatus } from "./type";
+
+export interface PageProps {
+    params: {
+        id: string
+    }
+}
+
 export interface Location {
     street?: string,
     postalCode?: string,
@@ -42,6 +51,7 @@ export interface OfficeData {
     mobileNumber?: string,
     email?: string,
     description?: string,
+    servicesOffered?: string,
     logoUrl?: string,
     rating: number,
     reviewCount: string,
@@ -49,13 +59,29 @@ export interface OfficeData {
     isSponsored?: boolean,
     website?: string,
     videoUrl: VideoCardData,
-    galleryMedia?: {
-        isVideo: boolean,
-        videoUrl?: VideoCardData,
-        imageUrl?: string
-    }[],
+    galleryMedia?: GalleryMedia[],
+    metaInfo:  MetaInfo,
+    verificationData: OfficeVerificationData,
     reviews?: ReviewData[],
     createdAt: Date
+}
+
+export interface OfficeRequests extends OfficeData {
+    status: OfficeRequestStatus
+}
+
+export interface MetaInfo {
+    urlSlug: string, 
+    title: string, 
+    description: string, 
+    keywords?: string, 
+    graphImageUrl?: string
+}
+
+export interface GalleryMedia {
+    isVideo: boolean,
+    videoUrl?: VideoCardData,
+    imageUrl?: string
 }
 
 export interface OfficeVerificationData {
@@ -115,4 +141,10 @@ export interface DirectoryPortalDashboardStat {
     totalOffices: number,
     activeOffices: number,
     pendingOfficeRequests: number
+}
+
+export interface DirectoryMenuItems {
+    label: DirectoryPortalCategoryType, 
+    icon: IconType, 
+    link: string
 }
