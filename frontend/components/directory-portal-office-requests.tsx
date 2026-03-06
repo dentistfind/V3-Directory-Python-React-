@@ -1,13 +1,15 @@
 "use client"
 import { useDirectoryContext } from "@/context/DirectoryContext";
 import { OfficeRequests } from "@/lib/interface";
+import { DIRECTORY_PORTAL_OFFICE_REQUEST_DETAILS } from "@/lib/routes";
 import { dentalOfficeRequests } from "@/lib/temp-data";
 import { DIRECTORY_OFFICE_REQUEST_STATUSES, DirectoryOfficeRequestStatus, OfficeRequestStatus } from "@/lib/type";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp, FaMagnifyingGlass } from "react-icons/fa6";
 import { FiEdit } from "react-icons/fi";
 
-export default function DirectoryPortalOfficeRequests(){
+export default function DirectoryPortalOfficeRequests({ userId }: { userId: string}){
     const [ officeRequests, setOfficeRequests ] = useState<OfficeRequests[]>([...dentalOfficeRequests])
     const [ inputSearch, setInputSearch ] = useState("")
     const [ statusDisplay, setStatusDisplay ] = useState<DirectoryOfficeRequestStatus>("All")
@@ -88,7 +90,7 @@ export default function DirectoryPortalOfficeRequests(){
                     </div>
                     {officeRequests.map((item, index) => (
                         <div className="*:wrap-break-word *:whitespace-normal text-xs" key={index}>
-                            <p>{item.officeName}</p>
+                            <Link href={DIRECTORY_PORTAL_OFFICE_REQUEST_DETAILS(userId, item.id)} className="hover:underline">{item.officeName}</Link>
                             <p>{item.ownerName}</p>
                             <p>{item.email}</p>
                             <p>{item.mobileNumber}</p>

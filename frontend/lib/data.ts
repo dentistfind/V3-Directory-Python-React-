@@ -8,4 +8,4 @@ export const FACEBOOK_URL = "https://www.facebook.com/DentistFind"
 export const WEBSITE_URL= "https://www.dentistfind.com"
 
 
-export const DIRECTORY_PORTAL_CATEGORIES = ["Dashboard", "Offices", "Add Office", "Office Request", "Reviews", "Video Manager"] as const
+export const DIRECTORY_PORTAL_CATEGORIES = ["Dashboard", "Offices", "Add Office", "Office Request", "Request Details", "Reviews", "Video Manager"] as const

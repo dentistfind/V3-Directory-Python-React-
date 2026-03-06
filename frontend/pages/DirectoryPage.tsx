@@ -3,6 +3,8 @@ import DirectoryNavbar from "@/components/directory-navbar"
 import DirectoryPortalDashboard from "@/components/directory-portal-dashboard"
 import DirectoryPortalOfficeRequests from "@/components/directory-portal-office-requests"
 import DirectoryPortalOffices from "@/components/directory-portal-offices"
+import DirectoryPortalReviews from "@/components/directory-portal-reviews"
+import OfficeRequestDetails from "@/components/office-request-details"
 import PortalHeader from "@/components/portal-header"
 import type { DirectoryUser } from "@/lib/interface"
 import { HOME_PAGE_URL } from "@/lib/routes"
@@ -11,7 +13,7 @@ import { DirectoryPortalCategoryType } from "@/lib/type"
 import { redirect } from "next/navigation"
 import { useEffect, useState } from "react"
 
-export default function DirectoryUser({ id, category }:{ id: string | number, category: DirectoryPortalCategoryType }){
+export default function DirectoryUser({ id, category, requestId }:{ id: string | number, category: DirectoryPortalCategoryType, requestId?: string | number }){
     const [ userData, setUserData ] = useState<DirectoryUser>()
 
     useEffect(() => {
@@ -28,8 +30,10 @@ export default function DirectoryUser({ id, category }:{ id: string | number, ca
             <div className="flex">
                 {userData && <DirectoryNavbar userId={userData.id} />}
                 {category === "Dashboard" && <DirectoryPortalDashboard />}
-                {userData && (category === "Offices" && <DirectoryPortalOffices userId={userData.id} />)}
-                {category === "Office Request" && <DirectoryPortalOfficeRequests />}
+                {(userData && category === "Offices") && <DirectoryPortalOffices userId={userData.id} />}
+                {(category === "Office Request" && userData) && <DirectoryPortalOfficeRequests userId={userData.id} />}
+                {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
+                {category === "Reviews" && <DirectoryPortalReviews />}
             </div>
         </div>
     )

@@ -3,7 +3,8 @@ import { DirectoryPortalCategoryType, OfficeRequestStatus } from "./type";
 
 export interface PageProps {
     params: {
-        id: string
+        id: string,
+        requestId?: string
     }
 }
 
@@ -99,7 +100,7 @@ export interface ModalProps {
 
 export interface InputProps {
     title: string,
-    onChange: React.ChangeEventHandler<HTMLInputElement>,
+    onChange?: React.ChangeEventHandler<HTMLInputElement>,
     value: string | number | readonly string[] | undefined
     placeholder?: string,
     isInvalid?: boolean,
