@@ -1,5 +1,5 @@
 import { OfficeReviewsSet1, OfficeReviewsSet2, OfficeReviewsSet3, OfficeReviewsSet4, OfficeReviewsSet5, OfficeReviewsSet6, OfficeReviewsSet7, SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3, } from "./constants";
-import { DirectoryUser, OfficeData, OfficeRequests, OfficeVerificationData } from "./interface";
+import { DirectoryUser, DirectoryVideoData, FaqData, OfficeData, OfficeRequests, OfficeVerificationData, SpotlightCard } from "./interface";
 import { makeVideo } from "./script";
 
 export const dummyOffices: OfficeData[] = [
@@ -1227,4 +1227,133 @@ export const dentalOfficeRequests: OfficeRequests[] = [
     createdAt: new Date("2025-02-25"),
     status: "Pending"
   }
+];
+
+export const directoryVideos: DirectoryVideoData[] = [
+  {
+    title: "Downtown Dental Clinic Introduction",
+    description: "A walkthrough of our modern dental clinic and services offered.",
+    sourceType: "youtube",
+    url: "https://www.youtube.com/watch?v=abc123xyz",
+    latitude: "40.7128",
+    longitude: "-74.0060",
+    radiusInMiles: 10,
+    status: "Active"
+  },
+  {
+    title: "Family Dentistry Care Tips",
+    description: "Helpful dental hygiene tips for families and children.",
+    sourceType: "vimeo",
+    url: "https://vimeo.com/458921234",
+    latitude: "34.0522",
+    longitude: "-118.2437",
+    radiusInMiles: 25,
+    status: "Active"
+  },
+  {
+    title: "Orthodontics Patient Experience",
+    description: "A patient testimonial about their orthodontic treatment journey.",
+    sourceType: "youtube",
+    url: "https://www.youtube.com/watch?v=xyz456abc",
+    latitude: "41.8781",
+    longitude: "-87.6298",
+    radiusInMiles: 15,
+    status: "Inactive"
+  },
+  {
+    title: "Dental Implant Procedure Overview",
+    description: "An overview of dental implant procedures and recovery expectations.",
+    sourceType: "self-hosted",
+    url: "https://media.example.com/videos/dental-implants.mp4",
+    latitude: "29.7604",
+    longitude: "-95.3698",
+    radiusInMiles: 20,
+    status: "Active"
+  },
+  {
+    title: "Emergency Dental Services Explained",
+    description: "Learn what to do when facing a dental emergency.",
+    sourceType: "youtube",
+    url: "https://www.youtube.com/watch?v=emergency789",
+    latitude: "33.4484",
+    longitude: "-112.0740",
+    radiusInMiles: 30,
+    status: "Inactive"
+  },
+  {
+    title: "Cosmetic Dentistry Smile Makeover",
+    description: "Before and after transformations from cosmetic dentistry procedures.",
+    sourceType: "vimeo",
+    url: "https://vimeo.com/761234890",
+    latitude: "39.7392",
+    longitude: "-104.9903",
+    radiusInMiles: 12,
+    status: "Active"
+  }
+]
+
+export const dummyFaqs: FaqData[] = [
+  {
+    question: "How often should we visit the dentist?",
+    answer: "It is generally recommended to visit the dentist every six months for a routine check-up and professional cleaning. However, some patients may require more frequent visits depending on their oral health condition. Regular visits help detect issues early and maintain a healthy smile."
+  },
+  {
+    question: "What should I do if I have a dental emergency?",
+    answer: "If you experience severe tooth pain, a knocked-out tooth, swelling, or bleeding, contact your dentist immediately. For a knocked-out tooth, try to keep it moist in milk or saline solution and seek care as soon as possible. Prompt treatment can often prevent further complications."
+  },
+  {
+    question: "How long does Invisalign treatment take?",
+    answer: "Invisalign treatment typically takes between 6 to 18 months, depending on the complexity of your case. Some minor corrections may take less time, while more advanced alignment issues may require longer treatment. Your dentist will provide a personalized timeline after assessment."
+  },
+  {
+    question: "Is teeth whitening safe?",
+    answer: "Yes, professional teeth whitening is safe when performed under the supervision of a qualified dentist. We use approved products that minimize sensitivity and protect your enamel while effectively brightening your smile."
+  },
+  {
+    question: "Do dental procedures hurt?",
+    answer: "Modern dental techniques and anesthesia ensure that most procedures are comfortable and virtually pain-free. You may experience mild discomfort after certain treatments, but this is usually temporary and manageable with prescribed care."
+  },
+  {
+    question: "At what age should children first see a dentist?",
+    answer: "Children should have their first dental visit by their first birthday or when their first tooth appears. Early visits help monitor development, prevent cavities, and establish healthy oral hygiene habits from a young age."
+  }
+];
+
+export const spotlightCards: SpotlightCard[] = [
+  {
+    name: "Aesthetic Implant Dental",
+    specialty: "Family & Cosmetic Dentistry",
+    location: "5775 Yonge St Suite #1000, Floor 10 Toronto, ON",
+    description: "Gentle, personalized care with a focus on making every patient feel at home.",
+    video: {
+      videoSrc: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841564/Aesthetic_Impant_General_Dentistry_wral4y.mp4",
+      videoThumbnail: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841564/Aesthetic_Impant_General_Dentistry_wral4y.png",
+      duration: "00:54",
+      spotlight: true,
+    },
+  },
+  {
+    name: "7 Days Dental",
+    specialty: "General Dentistry",
+    location: "4997 Highway 7 East Unit 5-6 Markham, ON",
+    description: "Making dental visits comfortable and stress-free for patients of all ages.",
+    video: {
+      videoSrc: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841567/7_days_Dental_xefgxd.mp4",
+      videoThumbnail: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841567/7_days_Dental_xefgxd.png",
+      duration: "00:49",
+      spotlight: true,
+    },
+  },
+  {
+    name: "Southdale Dentistry",
+    specialty: "Family Dentistry",
+    location: "104-553 Southdale Rd E London, ON N6E 3V9",
+    description: "Comprehensive care with a patient-first approach to oral health.",
+    video: {
+      videoSrc: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841560/Southdale_Dentist_FINAL_snyupy.mp4",
+      videoThumbnail: "https://res.cloudinary.com/dw6y5ce5p/video/upload/v1770841560/Southdale_Dentist_FINAL_snyupy.png",
+      duration: "01:00",
+      spotlight: true,
+    },
+  },
 ];

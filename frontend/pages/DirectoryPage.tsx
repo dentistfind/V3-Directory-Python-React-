@@ -5,6 +5,7 @@ import DirectoryPortalOfficeRequests from "@/components/directory-portal-office-
 import DirectoryPortalOffices from "@/components/directory-portal-offices"
 import DirectoryPortalReviewDetails from "@/components/directory-portal-review-details"
 import DirectoryPortalReviews from "@/components/directory-portal-reviews"
+import DirectoryPortalVideoManager from "@/components/directory-portal-video-manager"
 import OfficeRequestDetails from "@/components/office-request-details"
 import PortalHeader from "@/components/portal-header"
 import type { DirectoryUser } from "@/lib/interface"
@@ -36,6 +37,7 @@ export default function DirectoryUser({ id, category, requestId }:{ id: string |
                 {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
                 {(category === "Reviews" && userData) && <DirectoryPortalReviews userId={userData.id} />}
                 {(category === "Review Details" && userData && requestId) && <DirectoryPortalReviewDetails userId={userData.id} requestId={requestId} />}
+                {(category === "Video Manager" && userData) && <DirectoryPortalVideoManager userData={userData} />}
             </div>
         </div>
     )

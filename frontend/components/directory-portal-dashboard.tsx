@@ -1,6 +1,6 @@
 "use client"
 import { DirectoryPortalDashboardStat, OfficeData, OfficeRequests } from "@/lib/interface"
-import { dentalOfficeRequests, dummyDentalOffices, dummyOffices } from "@/lib/temp-data"
+import { dentalOfficeRequests, dummyDentalOffices } from "@/lib/temp-data"
 import { useEffect, useState } from "react"
 import DashboardCard from "./ui/dashboard-card"
 import { PiBuildingOfficeLight } from "react-icons/pi";

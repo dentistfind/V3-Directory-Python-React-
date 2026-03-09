@@ -1,5 +1,5 @@
 import { IconType } from "react-icons/lib";
-import { DirectoryPortalCategoryType, OfficeRequestStatus } from "./type";
+import { DirectoryPortalCategoryType, DirectoryStatusDisplay, OfficeRequestStatus } from "./type";
 
 export interface PageProps {
     params: {
@@ -149,4 +149,15 @@ export interface DirectoryMenuItems {
     label: DirectoryPortalCategoryType, 
     icon: IconType, 
     link: string
+}
+
+export interface DirectoryVideoData {
+    title: string,
+    description?: string,
+    sourceType: string,
+    url: string,
+    latitude: string,
+    longitude: string,
+    radiusInMiles: number,
+    status: DirectoryStatusDisplay
 }

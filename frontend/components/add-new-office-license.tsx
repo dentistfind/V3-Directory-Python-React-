@@ -1,8 +1,6 @@
 "use client"
 import { useDirectoryContext } from "@/context/DirectoryContext"
 import Input from "./ui/input"
-import File from "./ui/svg/file"
-import Upload from "./ui/svg/upload"
 import UploadMedia from "./ui/upload-media"
 
 export default function AddNewOfficeLicense(){
