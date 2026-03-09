@@ -18,7 +18,7 @@ export default function ExploreMoreTopics(){
         <div className="bg-theme-light p-20 space-y-10 text-center">
             <div className="space-y-3">
                 <h2 className="text-2xl font-semibold">Empower Your Smile with Knowledge</h2>
-                <p className="font-light text-sm">Explore educational content from local experts and learn about dental care and services</p>
+                <div className="font-light text-sm">Explore educational content from local experts and learn about dental care and services</div>
             </div>
             <div className="mx-20 bg-white space-y-3 rounded-lg">
                 <VideoCard 
@@ -29,13 +29,13 @@ export default function ExploreMoreTopics(){
                 />
                 <div className="space-y-3 text-start p-5 shadow-lg">
                     <h2 className="text-2xl font-semibold">Discover More About DentalCare & Services</h2>
-                    <p className="font-light text-sm">Watch a comprehensive video about dental services and education to understand their benefits, procedures and what to expect. Gain insights from experienced dental professionals who make sure you're informed and comfortable every step of the way.</p>
+                    <div className="font-light text-sm">Watch a comprehensive video about dental services and education to understand their benefits, procedures and what to expect. Gain insights from experienced dental professionals who make sure you're informed and comfortable every step of the way.</div>
                 </div>
             </div>
             <div className="px-30 space-y-10 *:space-y-5">
                 <div className="mt-20">
                     <h2 className="text-2xl font-semibold">Explore More Topics</h2>
-                    <p className="font-light text-sm">Choose from a variety of dental services and educational topics that interest you. Dive into detailed videos and learn from the leading dentist in your community.</p>
+                    <div className="font-light text-sm">Choose from a variety of dental services and educational topics that interest you. Dive into detailed videos and learn from the leading dentist in your community.</div>
                 </div>
                 <div>
                     {moreTopics.map((item, index) => (
@@ -46,7 +46,7 @@ export default function ExploreMoreTopics(){
                 </div>
             </div>
             <div className="flex items-center justify-center">
-                <Button fill text={<p className="text-sm">Learn More About Dental Services</p>} />
+                <Button fill text={<div className="text-sm">Learn More About Dental Services</div>} />
             </div>
         </div>
     )

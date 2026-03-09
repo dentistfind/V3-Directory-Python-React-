@@ -45,7 +45,7 @@ export default function FAQS(){
                 ))}
             </div>
             <div className="flex items-center justify-center">
-                <Button fill text={<p className="text-sm">View All FAQs</p>} />
+                <Button fill text={<div className="text-sm">View All FAQs</div>} />
             </div>
         </div>
     )

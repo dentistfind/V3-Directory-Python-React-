@@ -13,7 +13,7 @@ export default function AddNewOfficeBasicInfo(){
         <div className="border border-gray-300 rounded-lg p-7 space-y-7">
             <div>
                 <h2 className="font-semibold text-lg">Office Profile</h2>
-                <p className="text-xs font-light">Tell us about your dental office</p>
+                <div className="text-xs font-light">Tell us about your dental office</div>
             </div>
             <div className="flex items-center gap-5">
                 <Input value={newOfficeData?.officeName} onChange={(e) => setNewOfficeData(prev => ({...prev, officeName: e.target.value}))} title="Office Name" placeholder="ABC Dental Clinic" />
@@ -30,7 +30,7 @@ export default function AddNewOfficeBasicInfo(){
                 <Input value={newOfficeData?.address.postalCode} onChange={(e) => setNewOfficeData(prev => ({...prev, address: ({...prev.address, postalCode: e.target.value})}))} title="Zip Code" placeholder="10001" />
             </div>
             <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                <p className="absolute -top-2 bg-white px-1">Office Description</p>
+                <div className="absolute -top-2 bg-white px-1">Office Description</div>
                 <textarea 
                     onChange={(e) => setNewOfficeData(prev => ({...prev, description: e.target.value}))} 
                     value={newOfficeData?.description} maxLength={300} rows={5}
@@ -38,7 +38,7 @@ export default function AddNewOfficeBasicInfo(){
                 />
             </div>
             <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                <p className="absolute -top-2 bg-white px-1">Services Offered</p>
+                <div className="absolute -top-2 bg-white px-1">Services Offered</div>
                 <textarea 
                     onChange={(e) => setNewOfficeData(prev => ({...prev, servicesOffered: e.target.value}))} 
                     value={newOfficeData?.servicesOffered} maxLength={100} rows={3}

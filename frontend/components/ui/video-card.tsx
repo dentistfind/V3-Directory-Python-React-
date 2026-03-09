@@ -37,7 +37,7 @@ export default function VideoCard({ videoSrc, videoThumbnail, className = ""}: V
                 whileHover={{ scale: 1.1 }}
                 className="w-16 h-16 rounded-full bg-theme flex items-center justify-center group-hover:bg-primary transition-colors shadow-xl"
                 >
-                <Play className="w-6 h-6 text-white group-hover:text-primary-foreground ml-1 transition-colors" />
+                <divlay className="w-6 h-6 text-white group-hover:text-primary-foreground ml-1 transition-colors" />
                 </motion.div>
             </div>
         </div>

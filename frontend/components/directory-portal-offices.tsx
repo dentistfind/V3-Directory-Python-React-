@@ -10,8 +10,6 @@ import { DIRECTORY_PORTAL_ADD_OFFICE } from "@/lib/routes";
 import { DirectoryStatusDisplay } from "@/lib/type";
 import { useDirectoryContext } from "@/context/DirectoryContext";
 
-
-
 export default function DirectoryPortalOffices({ userId }: { userId: string }){
     const router = useRouter()
     const [ showStatusDropdown, setShowStatusDropdown ] = useState(false)
@@ -43,7 +41,7 @@ export default function DirectoryPortalOffices({ userId }: { userId: string }){
             <div className="flex items-center justify-between">
                 <div>
                     <h2 className="font-semibold text-xl">Office Management</h2>
-                    <p className="text-sm font-light">Create and manage dental office listings</p>
+                    <div className="text-sm font-light">Create and manage dental office listings</div>
                 </div>
                 <div onClick={handleAddNewOfficeButton}><Button fill text="+ Add Office" className="w-fit rounded-md" /></div>
             </div>
@@ -56,9 +54,9 @@ export default function DirectoryPortalOffices({ userId }: { userId: string }){
                             <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value.toLowerCase())} className="outline-0 w-full" placeholder="Search by name, email, phone number" />
                         </div>
                         <div className="relative w-32">
-                            <p className="absolute -top-2 bg-white px-1 text-gray-500">Status</p>
+                            <div className="absolute -top-2 bg-white px-1 text-gray-500">Status</div>
                             <div onClick={() => setShowStatusDropdown(prev => !prev)} className="flex items-center justify-between cursor-pointer">
-                                <p>{statusDisplay}</p>
+                                <div>{statusDisplay}</div>
                                 {showStatusDropdown ? <FaChevronUp /> : <FaChevronDown />}
                             </div>
                             {showStatusDropdown && <div 
@@ -72,22 +70,22 @@ export default function DirectoryPortalOffices({ userId }: { userId: string }){
                 </div>
                 <div className="border border-gray-300 mt-5 *:border-b *:border-gray-300 *:p-3 *:*:w-1/6 *:flex *:items-center *:gap-2">
                     <div className="uppercase font-light text-sm">
-                        <p>OFFICE NAME</p>
-                        <p>EMAIL</p>
-                        <p>PHONE</p>
-                        <p>STATUS</p>
-                        <p>LOCATION</p>
-                        <p>ACTIONS</p>
+                        <div>OFFICE NAME</div>
+                        <div>EMAIL</div>
+                        <div>PHONE</div>
+                        <div>STATUS</div>
+                        <div>LOCATION</div>
+                        <div>ACTIONS</div>
                     </div>
                     {directoryOffices.map((item, index) => (
                         <div className="*:wrap-break-word *:whitespace-normal text-xs" key={index}>
-                            <p>{item.officeName}</p>
-                            <p>{item.email}</p>
-                            <p>{item.mobileNumber && "+"}{item.mobileNumber}</p>
+                            <div>{item.officeName}</div>
+                            <div>{item.email}</div>
+                            <div>{item.mobileNumber && "+"}{item.mobileNumber}</div>
                             <div className={`rounded-full text-center py-2 ${item.isAvailable ? "bg-theme-light text-theme" : "bg-[#EBEBEB] text-[#5C5C5C]"}`}>
                                 {item.isAvailable ? "Active" : "In-Active"}
                             </div>
-                            <p>{item.address.city}, {item.address.state}</p>
+                            <div>{item.address.city}, {item.address.state}</div>
                             <div className="text-lg flex items-center gap-3 *:cursor-pointer">
                                 <FiEdit />
                                 <FaTrashAlt className="text-[#E20C0C]" />

@@ -8,7 +8,7 @@ import { useDirectoryContext } from "@/context/DirectoryContext"
 
 export default function DirectoryPortalDashboard(){
     const [ directoryOffices, setDirectoryOffices ] = useState<OfficeData[]>([...dummyDentalOffices])
-    const [ officeRequests, setOfficeRequests ] = useState<OfficeRequests[]>([...dentalOfficeRequests])
+    const [ officeRequests ] = useState<OfficeRequests[]>([...dentalOfficeRequests])
     const [ dashboardStats, setDashboardStats ] = useState<DirectoryPortalDashboardStat>({ totalOffices: 0, activeOffices: 0, pendingOfficeRequests: 0 })
     const { setDirectoryPortalCategory } = useDirectoryContext()
 
@@ -29,7 +29,7 @@ export default function DirectoryPortalDashboard(){
         <div className="flex-1 min-h-screen p-5 space-y-7">
             <div>
                 <h2 className="font-semibold text-xl">Dashboard</h2>
-                <p className="text-sm font-light">Welcome back! Here's what's happening today.</p>
+                <div className="text-sm font-light">Welcome back! Here's what's happening today.</div>
             </div>
             <div className="w-full flex items-center gap-5">
                 <DashboardCard title="Total Offices" icon={<PiBuildingOfficeLight />} content={dashboardStats?.totalOffices} />
@@ -38,20 +38,20 @@ export default function DirectoryPortalDashboard(){
             </div>
             <div className="border border-theme rounded-lg p-5">
                 <h3 className="font-semibold">Recently Added Offices</h3>
-                <p className="text-sm font-light">Latest offices added to the directory</p>
+                <div className="text-sm font-light">Latest offices added to the directory</div>
                 <div className="border border-gray-300 mt-5 *:border-b *:border-gray-300 *:p-3 *:*:w-1/4 *:flex *:items-center">
                     <div className=" uppercase font-light text-sm">
-                        <p>OFFICE NAME</p>
-                        <p>EMAIL</p>
-                        <p>PHONE</p>
-                        <p>LOCATION</p>
+                        <div>OFFICE NAME</div>
+                        <div>EMAIL</div>
+                        <div>PHONE</div>
+                        <div>LOCATION</div>
                     </div>
                     {directoryOffices.map((item, index) => (
                         <div className="*:wrap-break-word *:whitespace-normal text-xs" key={index}>
-                            <p>{item.officeName}</p>
-                            <p>{item.email}</p>
-                            <p>{item.mobileNumber && "+"}{item.mobileNumber}</p>
-                            <p>{item.address.city}, {item.address.state}</p>
+                            <div>{item.officeName}</div>
+                            <div>{item.email}</div>
+                            <div>{item.mobileNumber && "+"}{item.mobileNumber}</div>
+                            <div>{item.address.city}, {item.address.state}</div>
                         </div>
                     ))}
                 </div>

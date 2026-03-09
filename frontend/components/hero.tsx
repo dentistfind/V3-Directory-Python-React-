@@ -10,8 +10,8 @@ export default function Hero({ location } : { location: Location }){
         <div className="relative w-full h-125">
             <Image src="/homepage/hero-img.png" fill alt="Hero Image" className="object-cover" />
             <div className="w-full h-full absolute text-white flex flex-col items-center justify-center gap-3">
-                <p className="text-4xl font-semibold">Find the best local <span className="text-theme">Dentist</span> for you</p>
-                <p className="text-lg">Book a free consultation with a licensed provider today</p>
+                <div className="text-4xl font-semibold">Find the best local <span className="text-theme">Dentist</span> for you</div>
+                <div className="text-lg">Book a free consultation with a licensed provider today</div>
                 <div className="bg-white p-5 rounded-full text-gray-600 h-15 flex items-center justify-center gap-10 *:flex *:items-center *:justify-center *:gap-2">
                     <div>
                         <CiSearch />
@@ -19,14 +19,14 @@ export default function Hero({ location } : { location: Location }){
                     </div>
                     <div className="border-l flex items-center pl-2">
                         <CiLocationOn />
-                        <p>{location?.city}, {location?.country}</p>
+                        <div>{location?.city}, {location?.country}</div>
                     </div>
                     <Link href={TOP_OFFICES_URL}>
                         <Button 
                             fill 
                             text={<div className="flex items-center justify-center text-sm gap-2">
                                 <CiSearch />
-                                <p>Find Dentist</p>
+                                <div>Find Dentist</div>
                             </div>} 
                         />
                     </Link>

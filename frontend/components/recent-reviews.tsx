@@ -75,7 +75,7 @@ export default function RecentReviews(){
                 ))}
             </div>
             <div className="flex items-center justify-center">
-                <Button text={<p className="text-sm">View All</p>} />
+                <Button text={<div className="text-sm">View All</div>} />
             </div>
         </div>
     )

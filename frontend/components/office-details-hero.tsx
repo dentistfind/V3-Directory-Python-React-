@@ -14,7 +14,7 @@ export default function OfficeDetailsHero({ officeData }: {officeData: OfficeDat
 
     return(
         <div className="bg-white text-black">
-            <p className="text-xs flex items-center gap-1 p-5"><Link href={HOME_PAGE_URL} className="text-gray-400 flex items-center gap-1 cursor-pointer">DentistFind <FaChevronRight className="text-xs" /></Link> {officeName}</p>
+            <div className="text-xs flex items-center gap-1 p-5"><Link href={HOME_PAGE_URL} className="text-gray-400 flex items-center gap-1 cursor-pointer">DentistFind <FaChevronRight className="text-xs" /></Link> {officeName}</div>
             <div className="px-20 pb-10">
                 <VideoCard videoSrc={videoSrc} videoThumbnail={videoThumbnail} className="rounded-3xl h-80 w-full" />
             </div>
@@ -36,13 +36,13 @@ export default function OfficeDetailsHero({ officeData }: {officeData: OfficeDat
                                 starDimension="20px"
                                 starSpacing="0px"
                             />
-                            <p className="font-semibold">{rating} • {reviewCount} reviews</p>
+                            <div className="font-semibold">{rating} • {reviewCount} reviews</div>
                         </div>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Button text={<p className="text-xs flex items-center gap-1"><FaPhone />Call Office</p>} />
-                    <Button text={<p className="text-xs flex items-center gap-1"><CiLocationOn />Get Directions</p>} />
+                    <Button text={<div className="text-xs flex items-center gap-1"><FaPhone />Call Office</div>} />
+                    <Button text={<div className="text-xs flex items-center gap-1"><CiLocationOn />Get Directions</div>} />
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import DirectoryNavbar from "@/components/directory-navbar"
 import DirectoryPortalDashboard from "@/components/directory-portal-dashboard"
 import DirectoryPortalOfficeRequests from "@/components/directory-portal-office-requests"
 import DirectoryPortalOffices from "@/components/directory-portal-offices"
+import DirectoryPortalReviewDetails from "@/components/directory-portal-review-details"
 import DirectoryPortalReviews from "@/components/directory-portal-reviews"
 import OfficeRequestDetails from "@/components/office-request-details"
 import PortalHeader from "@/components/portal-header"
@@ -33,7 +34,8 @@ export default function DirectoryUser({ id, category, requestId }:{ id: string |
                 {(userData && category === "Offices") && <DirectoryPortalOffices userId={userData.id} />}
                 {(category === "Office Request" && userData) && <DirectoryPortalOfficeRequests userId={userData.id} />}
                 {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
-                {category === "Reviews" && <DirectoryPortalReviews />}
+                {(category === "Reviews" && userData) && <DirectoryPortalReviews userId={userData.id} />}
+                {(category === "Review Details" && userData && requestId) && <DirectoryPortalReviewDetails userId={userData.id} requestId={requestId} />}
             </div>
         </div>
     )

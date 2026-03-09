@@ -43,7 +43,7 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                 <div className="border border-gray-300 w-200 rounded-lg p-5 space-y-7">
                     <div>
                         <h3 className="text-xl font-semibold">Office Profile</h3>
-                        <p className="font-light text-gray-400 text-xs">Tell us about your dental office</p>
+                        <div className="font-light text-gray-400 text-xs">Tell us about your dental office</div>
                     </div>
                     <div className="flex items-center gap-5">
                         <Input 
@@ -92,7 +92,7 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                         />
                     </div>
                     <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                        <p className="absolute -top-2 bg-white px-1">Office Description</p>
+                        <div className="absolute -top-2 bg-white px-1">Office Description</div>
                         <textarea 
                             onChange={(e) => setOfficeData((prev: OfficeData) => ({...prev, description: e.target.value}))} 
                             value={officeData.description} maxLength={300} rows={5}
@@ -100,14 +100,14 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                         />
                     </div>
                     <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                        <p className="absolute -top-2 bg-white px-1">Services Offered</p>
+                        <div className="absolute -top-2 bg-white px-1">Services Offered</div>
                         <textarea 
                             onChange={(e) => setOfficeData((prev: OfficeData) => ({...prev, servicesOffered: e.target.value}))} 
                             value={officeData.servicesOffered} maxLength={100} rows={3}
                             className="w-full h-full outline-0 resize-none" placeholder={"General Dentistry, Cosmetic Dentistry, Orthodontics..."} 
                         />
                     </div>
-                    {hasInvalidField && <p className="text-[#fb2c36] text-xs">Please fill in all mandatory fields</p>}
+                    {hasInvalidField && <div className="text-[#fb2c36] text-xs">Please fill in all mandatory fields</div>}
                     <div className="w-full flex justify-end gap-2">
                         <div className="border border-gray-400 cursor-pointer text-black bg-gray-100 px-3 py-2 rounded-full text-sm">
                             Cancel

@@ -12,12 +12,12 @@ export default function LoginPage(){
                 <div className="bg-theme text-black">Need help? Visit our Help Center</div>
                 <div className="bg-theme-dark text-white flex justify-between items-center">
                     <div className="flex items-center gap-5">
-                        <p>© {new Date().getFullYear()} Dentist Find, Inc.</p>
+                        <div>© {new Date().getFullYear()} Dentist Find, Inc.</div>
                         <div className="flex items-center gap-3 text-stone-300">
                             <div>Terms</div> 
                             <div>Privacy</div> 
                             <div>Consumer Health</div> 
-                            <div className="flex items-center gap-1"><PrivacyIcon />Your privacy choices</div>
+                            <div className="flex items-center gap-1"><divrivacyIcon />Your privacy choices</div>
                         </div>
                     </div>
                     <SocialMediaButtons />

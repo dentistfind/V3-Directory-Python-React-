@@ -36,7 +36,8 @@ export interface ReviewData {
     author: string,
     content: string,
     createdAt: Date,
-    likeCount: number
+    likeCount: number,
+    rating?: number
 }
 
 export interface FaqData {

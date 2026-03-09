@@ -491,6 +491,7 @@ export const dummyDentalOffices: OfficeData[]= [
         author: "Emily R.",
         content: "Amazing staff and painless cleaning!",
         createdAt: new Date("2025-01-10"),
+        ratind: 4.3,
         likeCount: 12
       }
     ],
@@ -551,6 +552,7 @@ export const dummyDentalOffices: OfficeData[]= [
     },
     rating: 4.9,
     reviewCount: "210",
+    logoUrl: "https://picsum.photos/200?1",
     isAvailable: false,
     videoUrl: { videoSrc: "https://example.com/videos/office3.mp4", duration: "1:20" },
     verificationData: {
@@ -576,6 +578,7 @@ export const dummyDentalOffices: OfficeData[]= [
     },
     rating: 4.7,
     reviewCount: "156",
+    logoUrl: "https://picsum.photos/200?1",
     isAvailable: true,
     videoUrl: { videoSrc: "https://example.com/videos/office4.mp4" },
     verificationData: {
@@ -601,6 +604,7 @@ export const dummyDentalOffices: OfficeData[]= [
     },
     rating: 4.5,
     reviewCount: "87",
+    logoUrl: "https://picsum.photos/200?1",
     isAvailable: true,
     videoUrl: { videoSrc: "https://example.com/videos/office5.mp4" },
     verificationData: {
@@ -625,6 +629,7 @@ export const dummyDentalOffices: OfficeData[]= [
       country: "USA"
     },
     rating: 4.8,
+    logoUrl: "https://picsum.photos/200?1",
     reviewCount: "134",
     videoUrl: { videoSrc: "https://example.com/videos/office6.mp4" },
     verificationData: {
@@ -650,6 +655,7 @@ export const dummyDentalOffices: OfficeData[]= [
     },
     rating: 4.4,
     reviewCount: "65",
+    logoUrl: "https://picsum.photos/200?1",
     videoUrl: { videoSrc: "https://example.com/videos/office7.mp4" },
     verificationData: {
       licenseNumber: "DDS-CA-458921",
@@ -1047,7 +1053,8 @@ export const dentalOfficeRequests: OfficeRequests[] = [
         author: "Ifeoma K.",
         content: "My kids love coming here.",
         createdAt: new Date("2025-02-15"),
-        likeCount: 4
+        likeCount: 4,
+        rating: 3.6
       }
     ],
 
@@ -1103,9 +1110,6 @@ export const dentalOfficeRequests: OfficeRequests[] = [
       licenseDocumentSrc: "/docs/urbanwhite-license.pdf",
       liabilityInsuranceSrc: "/docs/urbanwhite-insurance.pdf"
     },
-
-    reviews: [],
-
     createdAt: new Date("2025-02-20"),
     status: "Rejected"
   },
@@ -1163,7 +1167,8 @@ export const dentalOfficeRequests: OfficeRequests[] = [
         author: "Samuel T.",
         content: "Very modern equipment and friendly staff.",
         createdAt: new Date("2025-02-22"),
-        likeCount: 9
+        likeCount: 9,
+        rating: 4.6
       }
     ],
 
@@ -1219,9 +1224,6 @@ export const dentalOfficeRequests: OfficeRequests[] = [
       licenseDocumentSrc: "/docs/royalteeth-license.pdf",
       liabilityInsuranceSrc: "/docs/royalteeth-insurance.pdf"
     },
-
-    reviews: [],
-
     createdAt: new Date("2025-02-25"),
     status: "Pending"
   }

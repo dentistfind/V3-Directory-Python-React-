@@ -13,32 +13,32 @@ export default function Footer(){
         <div className="bg-theme-dark text-white px-20 pt-10">
             <div className="flex items-center justify-between *:space-y-1 border-b border-gray-300 pb-10">
                 <div>
-                    <p className="uppercase text-lg pb-2">Find Dentists</p>
+                    <div className="uppercase text-lg pb-2">Find Dentists</div>
                     {footerData.dentists.map((item, index) => (
-                        <p key={index} className="text-sm font-light">{item}</p>
+                        <div key={index} className="text-sm font-light">{item}</div>
                     ))}
-                    <p className="text-sm font-light underline pt-2 cursor-pointer">All dentists</p>
+                    <div className="text-sm font-light underline pt-2 cursor-pointer">All dentists</div>
                 </div>
                 <div>
-                    <p className="uppercase text-lg pb-2">Find Dentist Groups</p>
+                    <div className="uppercase text-lg pb-2">Find Dentist Groups</div>
                     {footerData.dentistGroups.map((item, index) => (
-                        <p key={index} className="text-sm font-light">{item}</p>
+                        <div key={index} className="text-sm font-light">{item}</div>
                     ))}
-                    <p className="text-sm font-light underline pt-2 cursor-pointer">All dentist groups</p>
+                    <div className="text-sm font-light underline pt-2 cursor-pointer">All dentist groups</div>
                 </div>
                 <div>
-                    <p className="uppercase text-lg pb-2">Health Insurances</p>
+                    <div className="uppercase text-lg pb-2">Health Insurances</div>
                     {footerData.healthInsurances.map((item, index) => (
-                        <p key={index} className="text-sm font-light">{item}</p>
+                        <div key={index} className="text-sm font-light">{item}</div>
                     ))}
-                    <p className="text-sm font-light underline pt-2 cursor-pointer">All health insurances</p>
+                    <div className="text-sm font-light underline pt-2 cursor-pointer">All health insurances</div>
                 </div>
                 <div>
-                    <p className="uppercase text-lg pb-2">Specialties</p>
+                    <div className="uppercase text-lg pb-2">Specialties</div>
                     {footerData.specialties.map((item, index) => (
-                        <p key={index} className="text-sm font-light">{item}</p>
+                        <div key={index} className="text-sm font-light">{item}</div>
                     ))}
-                    <p className="text-sm font-light underline pt-2 cursor-pointer">All specialties</p>
+                    <div className="text-sm font-light underline pt-2 cursor-pointer">All specialties</div>
                 </div>
             </div>
             <div className="py-5 flex items-center justify-between">

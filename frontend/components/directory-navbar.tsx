@@ -10,9 +10,6 @@ import { useRouter } from "next/navigation";
 import { DirectoryPortalCategoryType } from "@/lib/type";
 import { DirectoryMenuItems } from "@/lib/interface";
 
-
-
-
 export default function DirectoryNavbar({ userId }: { userId: string }){
     const router = useRouter()
     const { directoryPortalCategory, setDirectoryPortalCategory } = useDirectoryContext()

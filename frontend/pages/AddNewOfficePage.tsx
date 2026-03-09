@@ -48,7 +48,7 @@ export default function AddNewOfficePage({ userId, officeId }: { userId: string,
                         <Link href={DIRECTORY_PORTAL_OFFICES(userId)}><FaChevronLeft className="cursor-pointer text-theme" /></Link>
                         <div>
                             <h2 className="font-semibold text-xl">Add New Office</h2>
-                            <p className="text-sm font-light">Create a new dental office listing with complete SEO optimization</p>
+                            <div className="text-sm font-light">Create a new dental office listing with complete SEO optimization</div>
                         </div>
                     </div>
                     <div className="border border-gray-300 shadow rounded-lg p-7 space-y-5">

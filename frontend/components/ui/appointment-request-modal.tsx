@@ -59,7 +59,7 @@ export default function AppointmentRequestModal({ isOpen, onClose, officeData }:
                                 starDimension="15px"
                                 starSpacing="0px"
                             />
-                            <p className="text-xs font-semibold">{rating} • {reviewCount} reviews</p>
+                            <div className="text-xs font-semibold">{rating} • {reviewCount} reviews</div>
                         </div>
                         <div className="text-xs flex items-center gap-1 font-semibold"><CiLocationOn /> {printAddress(address)}</div>
                     </div>
@@ -91,11 +91,11 @@ export default function AppointmentRequestModal({ isOpen, onClose, officeData }:
                     />
                 </div>
                 <div className="space-y-3">
-                    <p className="font-semibold text-sm">Dental Health Questions</p>
+                    <div className="font-semibold text-sm">Dental Health Questions</div>
                     <div className="text-xs space-y-1 *:flex *:items-center *:gap-1">
-                        <p><input type="checkbox" /> Are you experiencing any toothache?</p>
-                        <p><input type="checkbox" /> Do you have tooth sensitivity to hot/cold?</p>
-                        <p><input type="checkbox" /> Do you have bleeding gums?</p>
+                        <div><input type="checkbox" /> Are you experiencing any toothache?</div>
+                        <div><input type="checkbox" /> Do you have tooth sensitivity to hot/cold?</div>
+                        <div><input type="checkbox" /> Do you have bleeding gums?</div>
                     </div>
                 </div>
                 <Button text="Continue" className="text-center rounded-none" />

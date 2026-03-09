@@ -18,14 +18,14 @@ export default function Header({ notHomePage, location, authPage }:{ notHomePage
                     </div>
                     <div className="border-l flex items-center pl-2">
                         <CiLocationOn />
-                        <p>{location?.city}, {location?.country}</p>
+                        <div>{location?.city}, {location?.country}</div>
                     </div>
                     <Link href={TOP_OFFICES_URL}>
                         <Button 
                             fill 
                             text={<div className="flex items-center justify-center text-sm gap-2">
                                 <CiSearch />
-                                <p>Find Dentist</p>
+                                <div>Find Dentist</div>
                             </div>} 
                         />
                     </Link>

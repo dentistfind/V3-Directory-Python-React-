@@ -11,7 +11,7 @@ export default function AddNewOfficeUpload(){
         <div className="border border-gray-300 rounded-lg p-7 space-y-7">
             <div>
                 <h2 className="font-semibold text-lg">Upload Gallery</h2>
-                <p className="text-xs font-light">Add images for your office </p>
+                <div className="text-xs font-light">Add images for your office </div>
             </div>
             <UploadMedia title="Add Logo *" desc="Upload your image(JPG, PNG)" />
             <UploadMedia title="Add  images/video *" desc="Upload your medical license (MP4,JPG, PNG)" />

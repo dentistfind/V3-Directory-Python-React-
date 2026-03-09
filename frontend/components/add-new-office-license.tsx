@@ -16,7 +16,7 @@ export default function AddNewOfficeLicense(){
         <div className="border border-gray-300 rounded-lg p-7 space-y-7">
             <div>
                 <h2 className="font-semibold text-lg">Office Verification</h2>
-                <p className="text-xs font-light">Upload your credentials and documentation for verification</p>
+                <div className="text-xs font-light">Upload your credentials and documentation for verification</div>
             </div>
             <div className="flex items-center gap-5">
                 <Input title="Medical License Number *" placeholder="Enter your license number" value={newOfficeData?.verificationData.licenseNumber} onChange={(e) => setNewOfficeData(prev => ({...prev, verificationData: ({...prev.verificationData, licenseNumber: e.target.value})}))}  />

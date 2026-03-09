@@ -53,7 +53,7 @@ export default function DirectoryPortalOfficeRequests({ userId }: { userId: stri
         <div className="flex-1 min-h-screen p-5 space-y-7">
             <div>
                 <h2 className="font-semibold text-xl">Office Requests</h2>
-                <p className="text-sm font-light">Review and manage office listing requests</p>
+                <div className="text-sm font-light">Review and manage office listing requests</div>
             </div>
             <div className="rounded-lg p-5 border border-gray-300 mt-5">
                 <div className="text-lg flex justify-between items-center">
@@ -64,9 +64,9 @@ export default function DirectoryPortalOfficeRequests({ userId }: { userId: stri
                             <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value.toLowerCase())} className="outline-0 w-full" placeholder="Search by name, email, phone number" />
                         </div>
                         <div className="relative w-32">
-                            <p className="absolute -top-2 bg-white px-1 text-gray-500">Status</p>
+                            <div className="absolute -top-2 bg-white px-1 text-gray-500">Status</div>
                             <div onClick={() => setShowStatusDropdown(prev => !prev)} className="flex items-center justify-between cursor-pointer">
-                                <p>{statusDisplay}</p>
+                                <div>{statusDisplay}</div>
                                 {showStatusDropdown ? <FaChevronUp /> : <FaChevronDown />}
                             </div>
                             {showStatusDropdown && <div 
@@ -80,21 +80,21 @@ export default function DirectoryPortalOfficeRequests({ userId }: { userId: stri
                 </div>
                 <div className="border border-gray-300 mt-5 *:border-b *:border-gray-300 *:p-3 *:*:w-1/7 *:flex *:items-center *:gap-2">
                     <div className="uppercase font-light text-sm whitespace-nowrap">
-                        <p>OFFICE NAME</p>
-                        <p>CONTACT PERSON</p>
-                        <p>EMAIL</p>
-                        <p>PHONE</p>
-                        <p>DATE</p>
-                        <p>STATUS</p>
-                        <p>ACTIONS</p>
+                        <div>OFFICE NAME</div>
+                        <div>CONTACT PERSON</div>
+                        <div>EMAIL</div>
+                        <div>PHONE</div>
+                        <div>DATE</div>
+                        <div>STATUS</div>
+                        <div>ACTIONS</div>
                     </div>
                     {officeRequests.map((item, index) => (
                         <div className="*:wrap-break-word *:whitespace-normal text-xs" key={index}>
                             <Link href={DIRECTORY_PORTAL_OFFICE_REQUEST_DETAILS(userId, item.id)} className="hover:underline">{item.officeName}</Link>
-                            <p>{item.ownerName}</p>
-                            <p>{item.email}</p>
-                            <p>{item.mobileNumber}</p>
-                            <p>{item.createdAt.toISOString().split("T")[0]}</p>
+                            <div>{item.ownerName}</div>
+                            <div>{item.email}</div>
+                            <div>{item.mobileNumber}</div>
+                            <div>{item.createdAt.toISOString().split("T")[0]}</div>
                             <div style={{ color: StatusDisplay(item.status).text, backgroundColor: StatusDisplay(item.status).bg }} className="rounded-full text-center py-2">
                                 {item.status}
                             </div>

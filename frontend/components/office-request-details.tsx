@@ -44,7 +44,7 @@ export default function OfficeRequestDetails({ userId, requestId }: { userId: st
             <div className="rounded-lg p-5 border border-gray-300 mt-5 space-y-7">
                 <div>
                     <h2 className="font-semibold">Office Profile</h2>
-                    <p className="text-xs font-light">Tell us about your dental office</p>
+                    <div className="text-xs font-light">Tell us about your dental office</div>
                 </div>
                 <div className="flex items-center gap-5">
                     <Input value={officeRequest?.officeName} title="Office Name" placeholder="ABC Dental Clinic" />
@@ -61,14 +61,14 @@ export default function OfficeRequestDetails({ userId, requestId }: { userId: st
                     <Input value={officeRequest?.address.postalCode} title="Zip Code" placeholder="10001" />
                 </div>
                 <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                    <p className="absolute -top-2 bg-white px-1">Office Description</p>
+                    <div className="absolute -top-2 bg-white px-1">Office Description</div>
                     <textarea 
                         value={officeRequest?.description} maxLength={300} rows={5}
                         className="w-full h-full outline-0 resize-none" placeholder={"Tell patients about your office, specialties, and what makes you unique..."} 
                     />
                 </div>
                 <div className="w-full relative border border-gray-300 rounded-md p-3 text-xs">
-                    <p className="absolute -top-2 bg-white px-1">Services Offered</p>
+                    <div className="absolute -top-2 bg-white px-1">Services Offered</div>
                     <textarea 
                         value={officeRequest?.servicesOffered} maxLength={100} rows={3}
                         className="w-full h-full outline-0 resize-none" placeholder={"General Dentistry, Cosmetic Dentistry, Orthodontics..."} 

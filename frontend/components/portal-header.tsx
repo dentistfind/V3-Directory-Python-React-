@@ -15,7 +15,7 @@ export default function PortalHeader({ user: { name, profileSrc} }:{ user: Direc
                 <div className="relative">
                     <h3 className="font-semibold">Dentist Find</h3>
                     <div onClick={() => setShowPortalList(prev => !prev)} className="flex items-center gap-5 cursor-pointer text-sm">
-                        <p>Directory Portal</p>
+                        <div>Directory Portal</div>
                         {showPortalList ? <FaChevronUp className="text-sm text-stone-400" /> : <FaChevronDown className="text-sm text-stone-400" />}
                     </div>
                     {showPortalList && <div className="absolute top-12 bg-white w-full h-30 p-3 flex flex-col justify-between rounded-md border border-stone-200 shadow">
@@ -26,7 +26,7 @@ export default function PortalHeader({ user: { name, profileSrc} }:{ user: Direc
                 </div>
             </div>
             <div className="flex items-center gap-2 py-3 px-5">
-                <p>{name}</p>
+                <div>{name}</div>
                 {profileSrc && (
                     <div className="w-10 h-10 rounded-full overflow-hidden">
                         <Image

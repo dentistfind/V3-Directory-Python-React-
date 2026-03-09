@@ -6,19 +6,20 @@ import { useEffect, useState } from "react"
 import { FaMagnifyingGlass } from "react-icons/fa6"
 import OfficeRatingCard from "./ui/office-rating-card"
 
-export default function DirectoryPortalReviews(){
+export default function DirectoryPortalReviews({ userId }:{ userId: string }){
     const { setDirectoryPortalCategory } = useDirectoryContext()
     const [ inputSearch, setInputSearch ] = useState<string>()
-    const [ officeData, setOfficeData ] = useState<OfficeData[]>([...dummyDentalOffices])
+    const [ officeData ] = useState<OfficeData[]>([...dummyDentalOffices])
 
     useEffect(() => {
         setDirectoryPortalCategory("Reviews")
     }, [])
+
     return(
         <div className="flex-1 min-h-screen p-5 space-y-7">
             <div>
                 <h2 className="font-semibold text-xl">Office Reviews</h2>
-                <p className="text-sm font-light">Select an office to view and manage its reviews</p>
+                <div className="text-sm font-light">Select an office to view and manage its reviews</div>
             </div>
             <div className="rounded-lg p-5 border border-gray-300 mt-5 space-y-7">
                 <div className="text-lg flex justify-between items-center">
@@ -30,7 +31,7 @@ export default function DirectoryPortalReviews(){
                 </div>
                 <div className="grid grid-cols-3 gap-5">
                     {officeData.map(({ id, officeName, rating, reviewCount, address, logoUrl }) => (
-                        <div key={id}><OfficeRatingCard logoUrl={logoUrl} officeName={officeName} address={address} rating={rating} reviewCount={reviewCount} /></div>
+                        <div key={id}><OfficeRatingCard userId={userId} requestId={id} logoUrl={logoUrl} officeName={officeName} address={address} rating={rating} reviewCount={reviewCount} /></div>
                     ))}
                 </div>
             </div>
