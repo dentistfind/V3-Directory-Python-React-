@@ -9,7 +9,7 @@ import Link from "next/link";
 import { DIRECTORY_PORTAL_DASHBOARD } from "@/lib/routes";
 
 export default function LoginForm(){
-    const [ loginInput, setLoginInput ] = useState<LoginData>({ email: "", password: "" })
+    const [ loginInput, setLoginInput ] = useState<{email: string, password: string}>({ email: "", password: "" })
     const [ showPassword, setShowPassword ] = useState(false)
 
     return(
@@ -35,7 +35,7 @@ export default function LoginForm(){
                             {showPassword ? <FaEye /> : <FaEyeSlash />}
                         </div>
                     </div>
-                    <Link href={DIRECTORY_PORTAL_DASHBOARD("1234")} className="w-full"><Button fill text="Log In" className="w-full text-center" /></Link>
+                    <Link href={DIRECTORY_PORTAL_DASHBOARD("usr_001")} className="w-full"><Button fill text="Log In" className="w-full text-center" /></Link>
                 </div>
             </div>
         </div>

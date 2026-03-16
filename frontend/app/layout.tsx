@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { OfficeProvider } from "@/context/OfficeContext";
 import { DirectoryProvider } from "@/context/DirectoryContext";
+import { DFPortalProvider } from "@/context/DFPortalContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,7 +29,9 @@ export default function RootLayout({
       >
         <OfficeProvider>
           <DirectoryProvider>
-            {children}
+            <DFPortalProvider>
+              {children}
+            </DFPortalProvider>
           </DirectoryProvider>
         </OfficeProvider>
       </body>

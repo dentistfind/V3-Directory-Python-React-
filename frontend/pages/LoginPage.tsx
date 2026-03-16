@@ -17,7 +17,7 @@ export default function LoginPage(){
                             <div>Terms</div> 
                             <div>Privacy</div> 
                             <div>Consumer Health</div> 
-                            <div className="flex items-center gap-1"><divrivacyIcon />Your privacy choices</div>
+                            <div className="flex items-center gap-1"><PrivacyIcon />Your privacy choices</div>
                         </div>
                     </div>
                     <SocialMediaButtons />

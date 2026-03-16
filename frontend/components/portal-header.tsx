@@ -1,12 +1,30 @@
-import { DirectoryUser } from "@/lib/interface";
+import { UserData } from "@/lib/interface";
+import { DF_PORTAL_DASHBOARD, DIRECTORY_PORTAL_DASHBOARD } from "@/lib/routes";
+import { PortalCategory } from "@/lib/type";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
-const portalList = ["Directory Portal", "Office Portal", "DF Portal"]
+interface PortalListInterface { 
+    title: PortalCategory, 
+    link: string 
+}
 
-export default function PortalHeader({ user: { name, profileSrc} }:{ user: DirectoryUser }){
+export default function PortalHeader({ user: {name, profileSrc, id}, category }:{ user: UserData, category: PortalCategory }){
+    const router = useRouter()
     const [ showPortalList, setShowPortalList ] = useState(false)
+
+    const portalList: PortalListInterface[] = [
+        { title: "Directory Portal", link: DIRECTORY_PORTAL_DASHBOARD(id) }, 
+        { title: "Office Portal", link: "#"},
+        { title: "DF Portal", link: DF_PORTAL_DASHBOARD(id)}
+    ]
+
+    const handleCategoryClick = (item: PortalListInterface) => {
+        router.push(item.link)
+        setShowPortalList(false)
+    }
 
     return(
         <div className="flex items-center justify-between border-b border-stone-200">
@@ -15,12 +33,12 @@ export default function PortalHeader({ user: { name, profileSrc} }:{ user: Direc
                 <div className="relative">
                     <h3 className="font-semibold">Dentist Find</h3>
                     <div onClick={() => setShowPortalList(prev => !prev)} className="flex items-center gap-5 cursor-pointer text-sm">
-                        <div>Directory Portal</div>
+                        <div>{category}</div>
                         {showPortalList ? <FaChevronUp className="text-sm text-stone-400" /> : <FaChevronDown className="text-sm text-stone-400" />}
                     </div>
-                    {showPortalList && <div className="absolute top-12 bg-white w-full h-30 p-3 flex flex-col justify-between rounded-md border border-stone-200 shadow">
+                    {showPortalList && <div className="absolute top-12 bg-white h-30 p-3 flex flex-col justify-between rounded-md border border-stone-200 shadow">
                         {portalList.map((item, index) => (
-                            <div key={index} className="font-medium cursor-pointer text-sm hover:opacity-70">{item}</div>
+                            <div key={index} onClick={() => handleCategoryClick(item)} className="font-medium cursor-pointer text-sm hover:opacity-70 whitespace-nowrap">{item.title}</div>
                         ))}
                     </div>}
                 </div>

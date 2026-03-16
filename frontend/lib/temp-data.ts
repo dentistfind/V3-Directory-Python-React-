@@ -1,6 +1,5 @@
 import { OfficeReviewsSet1, OfficeReviewsSet2, OfficeReviewsSet3, OfficeReviewsSet4, OfficeReviewsSet5, OfficeReviewsSet6, OfficeReviewsSet7, SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3, } from "./constants";
-import { DirectoryUser, DirectoryVideoData, FaqData, OfficeData, OfficeRequests, OfficeVerificationData, SpotlightCard } from "./interface";
-import { makeVideo } from "./script";
+import { DirectoryVideoData, FaqData, OfficeData, OfficeRequests, OfficeVerificationData, SpotlightCard, UserData } from "./interface";
 
 export const dummyOffices: OfficeData[] = [
   {
@@ -392,6 +391,7 @@ export const dummyOffices: OfficeData[] = [
     keywords: `${office.officeName.toLowerCase()}, dentist, dental clinic`,
     description: `${office.officeName} is a trusted dental clinic located in ${office.address.city}.`
   },
+  noOfPatients: (index + 1) * 100,
   createdAt: new Date(2025, 0, index + 1),
 }))
 
@@ -406,6 +406,7 @@ export const initialOfficeData: OfficeData = {
     country: "",
     postalCode: ""
   },
+  noOfPatients: 0,
   mobileNumber: "",
   email: "",
   description: "",
@@ -446,11 +447,77 @@ export const initialOfficeVerData: OfficeVerificationData = {
     liabilityInsuranceSrc: ""
 }
 
-export const dummyDirectoryUser: DirectoryUser[] = [
+export const users: UserData[] = [
   {
-    id: "1234",
-    name: "Anuj K.",
-    profileSrc: "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+    id: "usr_001",
+    name: "Dr. Michael Roberts",
+    phoneNumber: "+1 202-555-0101",
+    profileSrc: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0",
+    loginData: {
+      email: "michael.roberts@dentacare.com",
+      lastLogin: "2026-03-14T10:23:00Z",
+      isActive: true
+    },
+    role: "Clinic Admin"
+  },
+  {
+    id: "usr_002",
+    name: "Sarah Johnson",
+    phoneNumber: "+1 202-555-0102",
+    profileSrc: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0",
+    loginData: {
+      email: "sarah.johnson@dentacare.com",
+      lastLogin: "2026-03-15T08:11:00Z",
+      isActive: true
+    },
+    role: "Clinic Admin"
+  },
+  {
+    id: "usr_003",
+    name: "David Lee",
+    phoneNumber: "+1 202-555-0103",
+    loginData: {
+      email: "david.lee@systemadmin.com",
+      lastLogin: "2026-03-13T19:40:00Z",
+      isActive: true
+    },
+    role: "Super Admin"
+  },
+  {
+    id: "usr_004",
+    name: "Amanda Clark",
+    phoneNumber: "+1 202-555-0104",
+    profileSrc: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0",
+    loginData: {
+      email: "amanda.clark@dentacare.com",
+      lastLogin: "2026-03-10T15:02:00Z",
+      isActive: false
+    },
+    role: "Clinic Admin"
+  },
+  {
+    id: "usr_005",
+    name: "James Peterson",
+    phoneNumber: "+1 202-555-0105",
+    profileSrc: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0",
+    loginData: {
+      email: "james.peterson@systemadmin.com",
+      lastLogin: "2026-03-12T09:18:00Z",
+      isActive: true
+    },
+    role: "Super Admin"
+  },
+  {
+    id: "usr_006",
+    name: "Emily Carter",
+    phoneNumber: "+1 202-555-0106",
+    profileSrc: "https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0",
+    loginData: {
+      email: "emily.carter@dentacare.com",
+      lastLogin: "2026-03-15T11:45:00Z",
+      isActive: true
+    },
+    role: "Clinic Admin"
   }
 ]
 
@@ -987,7 +1054,7 @@ export const dummyDentalOffices: OfficeData[]= [
     keywords: `${office.officeName.toLowerCase()}, dentist, dental clinic`,
     description: `${office.officeName} is a trusted dental clinic located in ${office.address.city}.`
   },
-
+  noOfPatients: (index + 1) * 100,
   createdAt: new Date(2025, 0, index + 1),
 }))
 
@@ -1357,3 +1424,25 @@ export const spotlightCards: SpotlightCard[] = [
     },
   },
 ];
+
+export const initialDirectoryVideoData: DirectoryVideoData = {
+  title: "",
+  sourceType: "",
+  url: "",
+  longitude: "",
+  latitude: "",
+  radiusInMiles: 0,
+  status: "Active"
+}
+
+export const initialUserData: UserData = {
+  id: "",
+  name: "",
+  profileSrc: "",
+  loginData: {
+    email: "",
+    isActive: true
+  },
+  phoneNumber: "",
+  role: "Clinic Admin"
+}

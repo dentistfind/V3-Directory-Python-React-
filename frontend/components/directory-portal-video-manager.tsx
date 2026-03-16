@@ -8,20 +8,24 @@ import { DirectoryUser, DirectoryVideoData } from "@/lib/interface"
 import { directoryVideos } from "@/lib/temp-data"
 import { FiEdit } from "react-icons/fi"
 import { FaTrashAlt } from "react-icons/fa"
+import AddNewVideoModal from "./ui/add-new-video-modal"
 
 export default function DirectoryPortalVideoManager({ userData } : { userData: DirectoryUser }){
     const { setDirectoryPortalCategory } = useDirectoryContext()
 
-    const [ directoryVideoData, setDirectoryVideoData ] = useState<DirectoryVideoData[]>([...directoryVideos])
+    const [ directoryVideoData ] = useState<DirectoryVideoData[]>([...directoryVideos])
     const [ inputSearch, setInputSearch ] = useState("")
     const [ showStatusDropdown, setShowStatusDropdown ] = useState(false)
     const [ statusDisplay, setStatusDisplay ] = useState<DirectoryStatusDisplay>("All")
+    const [ addVideoModalIsOpen, setAddVideoModalIsOpen ] = useState(false)
 
     useEffect(() => {
         setDirectoryPortalCategory("Video Manager")
     }, [])
 
-    const handleAddNewVideoButton = () => {}
+    const handleAddNewVideoButton = () => {
+        setAddVideoModalIsOpen(true)
+    }
 
     const StatusDisplay = (status: DirectoryStatusDisplay) => {
         switch (status) {
@@ -97,6 +101,7 @@ export default function DirectoryPortalVideoManager({ userData } : { userData: D
                     </div>}
                 </div>
             </div>
+            <AddNewVideoModal isOpen={addVideoModalIsOpen} onClose={() => setAddVideoModalIsOpen(false)} />
         </div>
     )
 }

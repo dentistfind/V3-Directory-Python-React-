@@ -1,5 +1,5 @@
 import { IconType } from "react-icons/lib";
-import { DirectoryPortalCategoryType, DirectoryStatusDisplay, OfficeRequestStatus } from "./type";
+import { DFPortalCategoryTypes, DirectoryPortalCategoryType, DirectoryStatusDisplay, OfficeRequestStatus, UserRole } from "./type";
 
 export interface PageProps {
     params: {
@@ -51,6 +51,7 @@ export interface OfficeData {
     ownerName: string,
     address: Location,
     mobileNumber?: string,
+    noOfPatients?: number,
     email?: string,
     description?: string,
     servicesOffered?: string,
@@ -124,13 +125,17 @@ export interface AddressData {
 
 export interface LoginData {
     email: string,
-    password: string
+    lastLogin?: string
+    isActive: boolean
 }
 
-export interface DirectoryUser {
+export interface UserData {
     id: string,
     name: string,
-    profileSrc?: string
+    profileSrc?: string,
+    loginData: LoginData,
+    phoneNumber: string,
+    role: UserRole
 }
 
 export interface DashboardCardProp {
@@ -139,14 +144,26 @@ export interface DashboardCardProp {
     icon?: React.ReactNode
 }
 
-export interface DirectoryPortalDashboardStat {
+export interface PortalDashboardStat {
     totalOffices: number,
-    activeOffices: number,
     pendingOfficeRequests: number
+}
+export interface DirectoryPortalDashboardStat extends PortalDashboardStat {
+    activeOffices: number,
+}
+
+export interface DFPortalDashboardStat extends PortalDashboardStat {
+    totalUsers: number,
 }
 
 export interface DirectoryMenuItems {
     label: DirectoryPortalCategoryType, 
+    icon: IconType, 
+    link: string
+}
+
+export interface DFMenuItems {
+    label: DFPortalCategoryTypes, 
     icon: IconType, 
     link: string
 }
@@ -161,3 +178,4 @@ export interface DirectoryVideoData {
     radiusInMiles: number,
     status: DirectoryStatusDisplay
 }
+

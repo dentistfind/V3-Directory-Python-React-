@@ -9,3 +9,4 @@ export const WEBSITE_URL= "https://www.dentistfind.com"
 
 
 export const DIRECTORY_PORTAL_CATEGORIES = ["Dashboard", "Offices", "Add Office", "Office Request", "Request Details", "Reviews", "Review Details", "Video Manager"] as const
+export const DF_PORTAL_CATEGORIES = ["Dashboard", "Users", "Offices", "Billings"]

@@ -6,9 +6,9 @@ import AddNewOfficeUpload from "@/components/add-new-office-upload"
 import DirectoryNavbar from "@/components/directory-navbar"
 import PortalHeader from "@/components/portal-header"
 import { useDirectoryContext } from "@/context/DirectoryContext"
-import { DirectoryUser } from "@/lib/interface"
+import { UserData } from "@/lib/interface"
 import { DIRECTORY_PORTAL_OFFICES, HOME_PAGE_URL } from "@/lib/routes"
-import { dummyDirectoryUser } from "@/lib/temp-data"
+import { users } from "@/lib/temp-data"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -23,7 +23,7 @@ const menuItems = [
 
 export default function AddNewOfficePage({ userId, officeId }: { userId: string, officeId: string | number }){
     const { addOfficeComponentPage, setAddOfficeComponentPage, setDirectoryPortalCategory } = useDirectoryContext()
-    const [ userData, setUserData ] = useState<DirectoryUser>()
+    const [ userData, setUserData ] = useState<UserData>()
 
     useEffect(() => {
         setDirectoryPortalCategory("Offices")
@@ -31,7 +31,7 @@ export default function AddNewOfficePage({ userId, officeId }: { userId: string,
     }, [])
 
     useEffect(() => {
-        const user = [...dummyDirectoryUser].find(item => item.id === userId)
+        const user = [...users].find(item => item.id === userId)
         if (!user){
             redirect(HOME_PAGE_URL)
         }
@@ -40,7 +40,7 @@ export default function AddNewOfficePage({ userId, officeId }: { userId: string,
 
     return (
         <div className="bg-white text-black">
-            {userData && <PortalHeader user={userData} />}
+            {userData && <PortalHeader user={userData} category="Directory Portal" />}
             <div className="flex">
                 {userData && <DirectoryNavbar userId={userData.id} />}
                 <div className="flex-1 min-h-screen p-5 space-y-7">

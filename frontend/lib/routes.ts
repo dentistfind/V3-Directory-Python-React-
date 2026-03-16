@@ -16,3 +16,9 @@ export const DIRECTORY_PORTAL_REVIEWS = (id: string) => `${DIRECTORY_PORTAL_URL}
 export const DIRECTORY_PORTAL_REVIEW_DETAILS = (id: string, requestId: string) => `${DIRECTORY_PORTAL_REVIEWS(id)}/${requestId}`
 
 export const DIRECTORY_PORTAL_VIDEO_MANAGER = (id: string) => `${DIRECTORY_PORTAL_URL}/${id}/video-manager`
+
+export const DF_PORTAL_URL = "/portals/df-portal"
+export const DF_PORTAL_DASHBOARD = (id: string) => `${DF_PORTAL_URL}/${id}/dashboard`
+export const DF_PORTAL_USERS = (id: string) => `${DF_PORTAL_URL}/${id}/users`
+export const DF_PORTAL_OFFICES = (id: string) => `${DF_PORTAL_URL}/${id}/offices`
+export const DF_PORTAL_BILLINGS = (id: string) => `${DF_PORTAL_URL}/${id}/billings`

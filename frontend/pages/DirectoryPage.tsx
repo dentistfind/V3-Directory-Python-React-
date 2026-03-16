@@ -8,18 +8,18 @@ import DirectoryPortalReviews from "@/components/directory-portal-reviews"
 import DirectoryPortalVideoManager from "@/components/directory-portal-video-manager"
 import OfficeRequestDetails from "@/components/office-request-details"
 import PortalHeader from "@/components/portal-header"
-import type { DirectoryUser } from "@/lib/interface"
+import type { UserData } from "@/lib/interface"
 import { HOME_PAGE_URL } from "@/lib/routes"
-import { dummyDirectoryUser } from "@/lib/temp-data"
+import { users } from "@/lib/temp-data"
 import { DirectoryPortalCategoryType } from "@/lib/type"
 import { redirect } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export default function DirectoryUser({ id, category, requestId }:{ id: string | number, category: DirectoryPortalCategoryType, requestId?: string | number }){
-    const [ userData, setUserData ] = useState<DirectoryUser>()
+    const [ userData, setUserData ] = useState<UserData>()
 
     useEffect(() => {
-        const user = [...dummyDirectoryUser].find(item => item.id === id)
+        const user = [...users].find(item => item.id === id)
         if (!user){
             redirect(HOME_PAGE_URL)
         }
@@ -28,7 +28,7 @@ export default function DirectoryUser({ id, category, requestId }:{ id: string |
 
     return (
         <div className="bg-white text-black">
-            {userData && <PortalHeader user={userData} />}
+            {userData && <PortalHeader user={userData} category="Directory Portal" />}
             <div className="flex">
                 {userData && <DirectoryNavbar userId={userData.id} />}
                 {category === "Dashboard" && <DirectoryPortalDashboard />}
