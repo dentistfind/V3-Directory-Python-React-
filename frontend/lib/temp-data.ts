@@ -1,5 +1,6 @@
 import { OfficeReviewsSet1, OfficeReviewsSet2, OfficeReviewsSet3, OfficeReviewsSet4, OfficeReviewsSet5, OfficeReviewsSet6, OfficeReviewsSet7, SPOTLIGHT_VIDEO1, SPOTLIGHT_VIDEO2, SPOTLIGHT_VIDEO3, } from "./constants";
-import { DirectoryVideoData, FaqData, OfficeData, OfficeRequests, OfficeVerificationData, SpotlightCard, UserData } from "./interface";
+import { DFPortalUser, DirectoryVideoData, FaqData, Invoice, OfficeData, OfficePortalAppointmentRequests, OfficePortalCallLogs, OfficePortalChatWidgetLogs, OfficePortalLeads, OfficePortalPatients, OfficePortalPatientTrackingLogs, OfficePortalSMSLogs, OfficePortalWebFormLogs, OfficeRequests, OfficeVerificationData, Order, Proposal, SpotlightCard, TrackingNumber, UserData } from "./interface";
+import { AppointmentStatus, CallLogsStatus, LeadsSource, LeadsStatus, PatientStatus } from "./type";
 
 export const dummyOffices: OfficeData[] = [
   {
@@ -1446,3 +1447,491 @@ export const initialUserData: UserData = {
   phoneNumber: "",
   role: "Clinic Admin"
 }
+
+export const dummyPortalUserAdmins: DFPortalUser[] = [
+  { id: "a1", name: "John Doe", receiveCall: true, emailNotification: true },
+  { id: "a2", name: "John Doe", receiveCall: true, emailNotification: true },
+];
+
+export const dummyPortalUsers: DFPortalUser[] = [
+  { id: "u1", name: "Jane Smith", receiveCall: true, emailNotification: true },
+  { id: "u2", name: "Mike Brown", receiveCall: true, emailNotification: true },
+  { id: "u3", name: "John Doe", receiveCall: true, emailNotification: true },
+  { id: "u4", name: "Sarah Johnson", receiveCall: true, emailNotification: true },
+];
+
+export const dummyPortalTrackingNumberData: TrackingNumber[] = Array.from({ length: 5 }, (_, i) => ({
+  id: `tn${i}`,
+  sno: "TN001",
+  trackingNumber: "+1 (786) 746-7839",
+  title: "GMB",
+  destinationNumber: "+1-555-0101",
+}));
+
+export const dummyDFPortalBillingOrders: Order[] = Array.from({ length: 10 }, (_, i) => ({
+  id: `o${i}`,
+  orderId: "ORD-2024-001",
+  office: "Sunrise Medical Center",
+  status: (["Active", "Cancelled", "Completed", "Waiting", "Active", "Active", "Cancelled", "Cancelled", "Completed", "Completed"] as const)[i],
+  date: "24-05-2025",
+  items: 3,
+  amount: 2384
+}));
+
+export const dummyDFPortalBillingInvoices: Invoice[] = Array.from({ length: 10 }, (_, i) => ({
+  id: `inv${i}`,
+  invoiceId: "INV-2024-001",
+  orderId: "ORD-2024-001",
+  office: "Sunrise Medical Center",
+  status: (["Pending", "Pending", "Paid", "Overdue", "Paid", "Paid", "Paid", "Overdue", "Overdue", "Paid"] as const)[i],
+  date: "24-05-2025",
+  amount: 2384
+}));
+
+export const dummyDFPortalBillingProposals: Proposal[] = Array.from({ length: 5 }, (_, i) => ({
+  id: `p${i}`,
+  proposalId: "PROP-2024-001",
+  orderId: "ORD-2024-001",
+  office: "Sunrise Medical Center",
+  status: i === 2 ? "Rejected" : "Accepted",
+  date: "24-05-2025",
+  amount: 2384,
+}));
+
+export const officePortalLeadsDummyData: OfficePortalLeads[] = [
+  {
+    name: "Chioma Okafor",
+    email: "chioma.okafor@gmail.com",
+    phoneNumber: "+2348123456789",
+    source: "Social Media",
+    status: "New Contact",
+    createdAt: new Date("2026-03-01T10:15:00"),
+  },
+  {
+    name: "Tunde Balogun",
+    email: "tunde.balogun@yahoo.com",
+    phoneNumber: "+2348034567890",
+    source: "Website",
+    status: "Contacted",
+    createdAt: new Date("2026-03-05T14:30:00"),
+  },
+  {
+    name: "Aisha Bello",
+    email: "aisha.bello@gmail.com",
+    phoneNumber: "+2348098765432",
+    source: "Google Ads",
+    status: "Qualified",
+    createdAt: new Date("2026-03-08T09:45:00"),
+  },
+  {
+    name: "Emeka Nwoye",
+    email: "emeka.nwoye@outlook.com",
+    phoneNumber: "+2348176543210",
+    source: "Referral",
+    status: "Patient Lead",
+    createdAt: new Date("2026-03-10T16:20:00"),
+  },
+  {
+    name: "Fatima Abubakar",
+    email: "fatima.abubakar@gmail.com",
+    phoneNumber: "+2348061122334",
+    source: "Social Media",
+    status: "Contacted",
+    createdAt: new Date("2026-03-12T11:05:00"),
+  },
+  {
+    name: "Daniel Johnson",
+    email: "daniel.johnson@gmail.com",
+    phoneNumber: "+2348159988776",
+    source: "Other",
+    status: "New Contact",
+    createdAt: new Date("2026-03-15T13:40:00"),
+  },
+  {
+    name: "Grace Eze",
+    email: "grace.eze@yahoo.com",
+    phoneNumber: "+2348182233445",
+    source: "Website",
+    status: "Qualified",
+    createdAt: new Date("2026-03-18T08:25:00"),
+  },
+  {
+    name: "Ibrahim Musa",
+    email: "ibrahim.musa@gmail.com",
+    phoneNumber: "+2348076655443",
+    source: "Google Ads",
+    status: "Patient Lead",
+    createdAt: new Date("2026-03-20T17:55:00"),
+  },
+];
+
+export const initialOfficePortalLead: OfficePortalLeads = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  source: "" as LeadsSource,
+  status: "" as LeadsStatus,
+  createdAt: new Date(),
+};
+
+export const initialOfficePortalPatient: OfficePortalPatients = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  location: {
+    street: "",
+    postalCode: "",
+    city: "",
+    state: "",
+    country: ""
+  },
+  status: "Active",
+  lastVisit: new Date()
+};
+
+export const officePortalPatientsDummyData: OfficePortalPatients[] = [
+  {
+    name: "John Doe",
+    email: "john.doe@gmail.com",
+    phoneNumber: "+2348012345678",
+    status: "Active",
+    lastVisit: new Date("2026-03-20"),
+    location: {
+      street: "12 Admiralty Way",
+      postalCode: "101233",
+      city: "Lekki",
+      state: "Lagos",
+      country: "Nigeria"
+    }
+  },
+  {
+    name: "Amaka Okafor",
+    email: "amaka.okafor@yahoo.com",
+    phoneNumber: "+2348098765432",
+    status: "Active",
+    lastVisit: new Date("2026-03-15"),
+    location: {
+      street: "45 Independence Layout",
+      postalCode: "400001",
+      city: "Enugu",
+      state: "Enugu",
+      country: "Nigeria"
+    }
+  },
+  {
+    name: "David Johnson",
+    email: "david.johnson@outlook.com",
+    phoneNumber: "+2348123456789",
+    status: "Inactive",
+    lastVisit: new Date("2025-12-10"),
+    location: {
+      city: "Port Harcourt",
+      state: "Rivers",
+      country: "Nigeria"
+    }
+  },
+  {
+    name: "Fatima Bello",
+    email: "fatima.bello@gmail.com",
+    phoneNumber: "+2348034567890",
+    status: "Active",
+    lastVisit: new Date("2026-02-28"),
+    location: {
+      street: "7 Ahmadu Bello Way",
+      postalCode: "800211",
+      city: "Kaduna",
+      state: "Kaduna",
+      country: "Nigeria"
+    }
+  },
+  {
+    name: "Chinedu Eze",
+    email: "chinedu.eze@gmail.com",
+    phoneNumber: "+2348076543210",
+    status: "Inactive",
+    lastVisit: new Date("2025-11-05"),
+    location: {
+      street: "22 Okpara Avenue",
+      city: "Owerri",
+      state: "Imo",
+      country: "Nigeria"
+    }
+  },
+  {
+    name: "Aisha Mohammed",
+    email: "aisha.mohammed@yahoo.com",
+    phoneNumber: "+2348061122334",
+    status: "Active",
+    lastVisit: new Date("2026-03-22"),
+    location: {
+      street: "18 Gwarinpa Estate",
+      postalCode: "900108",
+      city: "Abuja",
+      state: "FCT",
+      country: "Nigeria"
+    }
+  }
+];
+
+export const officePortalAppointmentRequestsDummyData: OfficePortalAppointmentRequests[] = [
+  {
+    name: "John Doe",
+    email: "john.doe@gmail.com",
+    phoneNumber: "+2348012345678",
+    serviceRequired: "Teeth Cleaning",
+    lastDentalVisit: new Date("2025-10-12"),
+    status: "Pending"
+  },
+  {
+    name: "Amaka Okafor",
+    email: "amaka.okafor@yahoo.com",
+    phoneNumber: "+2348098765432",
+    serviceRequired: "Tooth Extraction",
+    lastDentalVisit: new Date("2024-08-05"),
+    status: "Confirmed"
+  },
+  {
+    name: "David Johnson",
+    email: "david.johnson@outlook.com",
+    phoneNumber: "+2348123456789",
+    serviceRequired: "Dental Checkup",
+    lastDentalVisit: new Date("2026-01-18"),
+    status: "Pending"
+  },
+  {
+    name: "Fatima Bello",
+    email: "fatima.bello@gmail.com",
+    phoneNumber: "+2348034567890",
+    serviceRequired: "Braces Consultation",
+    lastDentalVisit: new Date("2023-12-22"),
+    status: "Confirmed"
+  },
+  {
+    name: "Chinedu Eze",
+    email: "chinedu.eze@gmail.com",
+    phoneNumber: "+2348076543210",
+    serviceRequired: "Tooth Filling",
+    lastDentalVisit: new Date("2025-06-14"),
+    status: "Pending"
+  },
+  {
+    name: "Aisha Mohammed",
+    email: "aisha.mohammed@yahoo.com",
+    phoneNumber: "+2348061122334",
+    serviceRequired: "Teeth Whitening",
+    lastDentalVisit: new Date("2026-02-10"),
+    status: "Confirmed"
+  }
+];
+
+export const initialOfficePortalAppointmentRequest: OfficePortalAppointmentRequests = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  serviceRequired: "",
+  lastDentalVisit: new Date(),
+  status: "Pending"
+}
+
+export const officePortalCallLogsDummyData: OfficePortalCallLogs[] = [
+  {
+    name: "John Doe",
+    phoneNumber: "+2348012345678",
+    createdAt: new Date("2026-03-25T10:15:00"),
+    patientStatus: "Active",
+    duration: 320,
+    status: "Completed",
+  },
+  {
+    name: "Mary Johnson",
+    phoneNumber: "+2348098765432",
+    createdAt: new Date("2026-03-25T12:30:00"),
+    patientStatus: "Inactive",
+    duration: 0,
+    status: "Missed",
+  },
+  {
+    name: "David Williams",
+    phoneNumber: "+2348134567890",
+    createdAt: new Date("2026-03-26T09:45:00"),
+    patientStatus: "Active",
+    duration: 210,
+    status: "Completed",
+  },
+  {
+    name: "Chioma Okafor",
+    phoneNumber: "+2348167890123",
+    createdAt: new Date("2026-03-26T14:10:00"),
+    patientStatus: "Active",
+    duration: 95,
+    status: "Completed",
+  },
+  {
+    name: "Ibrahim Musa",
+    phoneNumber: "+2348076543210",
+    createdAt: new Date("2026-03-26T16:50:00"),
+    patientStatus: "Inactive",
+    duration: 0,
+    status: "Missed",
+  },
+];
+
+export const officePortalWebFormLogsDummyData: OfficePortalWebFormLogs[] = [
+  {
+    name: "Aisha Bello",
+    email: "aisha.bello@gmail.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-24"),
+    submittedTime: { hour: 9, minute: 15 },
+    patientStatus: "Active",
+  },
+  {
+    name: "Michael Okeke",
+    email: "michael.okeke@yahoo.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-24"),
+    submittedTime: { hour: 11, minute: 40 },
+    patientStatus: "Inactive",
+  },
+  {
+    name: "Fatima Abdullahi",
+    email: "fatima.a@gmail.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-25"),
+    submittedTime: { hour: 14, minute: 5 },
+    patientStatus: "Active",
+  },
+  {
+    name: "David Johnson",
+    email: "david.johnson@outlook.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-25"),
+    submittedTime: { hour: 16, minute: 25 },
+    patientStatus: "Active",
+  },
+  {
+    name: "Chioma Nwankwo",
+    email: "chioma.nwankwo@gmail.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-26"),
+    submittedTime: { hour: 8, minute: 50 },
+    patientStatus: "Inactive",
+  },
+  {
+    name: "Samuel Adeyemi",
+    email: "samuel.adeyemi@gmail.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-26"),
+    submittedTime: { hour: 13, minute: 10 },
+    patientStatus: "Active",
+  },
+  {
+    name: "Zainab Musa",
+    email: "zainab.musa@yahoo.com",
+    formType: "Appointment Request",
+    submittedDate: new Date("2026-03-26"),
+    submittedTime: { hour: 17, minute: 55 },
+    patientStatus: "Active",
+  },
+];
+
+export const officePortalChatWidgetLogsDummyData: OfficePortalChatWidgetLogs[] = [
+  {
+    visitorName: "John Doe",
+    email: "john.doe@gmail.com",
+    startTime: new Date("2026-03-30T09:15:00"),
+    durationInSeconds: 320,
+    agent: "Dr. Smith",
+    patientStatus: "Active"
+  },
+  {
+    visitorName: "Amaka Okafor",
+    email: "amaka.okafor@gmail.com",
+    startTime: new Date("2026-03-30T10:45:00"),
+    durationInSeconds: 540,
+    agent: "Dr. Johnson",
+    patientStatus: "Active"
+  },
+  {
+    visitorName: "Tunde Balogun",
+    email: "tunde.balogun@gmail.com",
+    startTime: new Date("2026-03-29T14:20:00"),
+    durationInSeconds: 210,
+    agent: "Dr. Smith",
+    patientStatus: "Inactive"
+  },
+  {
+    visitorName: "Chioma Nwosu",
+    email: "chioma.nwosu@gmail.com",
+    startTime: new Date("2026-03-28T16:05:00"),
+    durationInSeconds: 780,
+    agent: "Dr. Adams",
+    patientStatus: "Active"
+  }
+];
+
+export const officePortalSMSLogsDummyData: OfficePortalSMSLogs[] = [
+  {
+    patientName: "John Doe",
+    createdAt: new Date("2026-03-30T08:30:00"),
+    phoneNumber: "+2348012345678",
+    message: "Hello, I would like to book an appointment.",
+    patientStatus: "Active",
+    smsStatus: "Inbound"
+  },
+  {
+    patientName: "Amaka Okafor",
+    createdAt: new Date("2026-03-30T09:45:00"),
+    phoneNumber: "+2348098765432",
+    message: "Your appointment is confirmed for tomorrow.",
+    patientStatus: "Active",
+    smsStatus: "Outbound"
+  },
+  {
+    patientName: "Tunde Balogun",
+    createdAt: new Date("2026-03-29T14:10:00"),
+    phoneNumber: "+2348123456789",
+    message: "Reminder: Dental check-up at 2 PM today.",
+    patientStatus: "Inactive",
+    smsStatus: "Outbound"
+  },
+  {
+    patientName: "Chioma Nwosu",
+    createdAt: new Date("2026-03-28T16:20:00"),
+    phoneNumber: "+2348034567890",
+    message: "Can I reschedule my appointment?",
+    patientStatus: "Active",
+    smsStatus: "Inbound"
+  }
+];
+
+export const officePortalPatientTrackingLogsDummyData: OfficePortalPatientTrackingLogs[] = [
+  {
+    name: "John Doe",
+    createdAt: new Date("2026-03-30T08:15:00"),
+    phoneNumber: "+2348012345678",
+    email: "john.doe@gmail.com",
+    patientStatus: "Active"
+  },
+  {
+    name: "Amaka Okafor",
+    createdAt: new Date("2026-03-30T10:20:00"),
+    phoneNumber: "+2348098765432",
+    email: "amaka.okafor@gmail.com",
+    patientStatus: "Active"
+  },
+  {
+    name: "Tunde Balogun",
+    createdAt: new Date("2026-03-29T14:05:00"),
+    phoneNumber: "+2348123456789",
+    email: "tunde.balogun@gmail.com",
+    patientStatus: "Inactive"
+  },
+  {
+    name: "Chioma Nwosu",
+    createdAt: new Date("2026-03-28T16:45:00"),
+    phoneNumber: "+2348034567890",
+    email: "chioma.nwosu@gmail.com",
+    patientStatus: "Active"
+  }
+];

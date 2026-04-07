@@ -4,6 +4,7 @@ import "./globals.css";
 import { OfficeProvider } from "@/context/OfficeContext";
 import { DirectoryProvider } from "@/context/DirectoryContext";
 import { DFPortalProvider } from "@/context/DFPortalContext";
+import { OfficePortalProvider } from "@/context/OfficePortalContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,6 +16,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "DentistFind",
   description: "Find a dentist near you. Book services from around 1000+ Dentist and experience hassle-free appointment.",
+  viewport: "width=device-width, initial-scale=1.0, viewport-fit=cover",
 };
 
 export default function RootLayout({
@@ -30,7 +32,9 @@ export default function RootLayout({
         <OfficeProvider>
           <DirectoryProvider>
             <DFPortalProvider>
-              {children}
+              <OfficePortalProvider>
+                {children}
+              </OfficePortalProvider>
             </DFPortalProvider>
           </DirectoryProvider>
         </OfficeProvider>

@@ -1,7 +1,7 @@
 import { ModalProps, UserData } from "@/lib/interface";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Input from "./input";
+import Input from "./ui/input";
 import { initialUserData } from "@/lib/temp-data";
 import { USER_ROLE_CATEGORIES, UserRole } from "@/lib/type";
 

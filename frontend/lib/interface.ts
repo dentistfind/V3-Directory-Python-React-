@@ -1,5 +1,5 @@
 import { IconType } from "react-icons/lib";
-import { DFPortalCategoryTypes, DirectoryPortalCategoryType, DirectoryStatusDisplay, OfficeRequestStatus, UserRole } from "./type";
+import { AppointmentStatus, CallLogsStatus, DFPortalCategoryTypes, DirectoryPortalCategoryType, DirectoryStatusDisplay, InvoiceStatus, LeadsSource, LeadsStatus, OfficePortalCategoryTypes, OfficeRequestStatus, OrderStatus, PatientStatus, ProposalStatus, SMSLogsStatus, UserRole } from "./type";
 
 export interface PageProps {
     params: {
@@ -168,6 +168,12 @@ export interface DFMenuItems {
     link: string
 }
 
+export interface OfficePortalMenuItems {
+    label: OfficePortalCategoryTypes, 
+    icon: IconType, 
+    link: string
+}
+
 export interface DirectoryVideoData {
     title: string,
     description?: string,
@@ -179,3 +185,128 @@ export interface DirectoryVideoData {
     status: DirectoryStatusDisplay
 }
 
+export interface TelecommunicationSettingType {
+    voiceMail: boolean, 
+    disclaimer: boolean,
+    message: boolean,
+    transcription: boolean, 
+}
+
+export interface DFPortalUser {
+  id: string;
+  name: string;
+  receiveCall: boolean;
+  emailNotification: boolean;
+}
+
+export interface TrackingNumber {
+  id: string;
+  sno: string;
+  trackingNumber: string;
+  title: string;
+  destinationNumber: string;
+}
+
+export interface Order {
+  id: string,
+  orderId: string,
+  office: string,
+  status: OrderStatus,
+  date: string,
+  items: number,
+  amount: number,
+}
+
+export interface Invoice {
+  id: string,
+  invoiceId: string,
+  orderId: string,
+  office: string,
+  status: InvoiceStatus,
+  date: string,
+  amount: number,
+}
+
+export interface Proposal {
+  id: string,
+  proposalId: string,
+  orderId: string,
+  office: string,
+  status: ProposalStatus,
+  date: string,
+  amount: number,
+}
+
+export interface OfficePortalLeads {
+    name: string,
+    email: string,
+    phoneNumber: string,
+    source: LeadsSource,
+    status: LeadsStatus,
+    createdAt: Date
+}
+
+export interface OfficePortalPatients {
+    name: string,
+    email: string,
+    phoneNumber: string,
+    location: Location, 
+    status: PatientStatus,
+    lastVisit: Date
+}
+
+export interface OfficePortalAppointmentRequests {
+    name: string,
+    email: string,
+    phoneNumber: string,
+    serviceRequired: string,
+    lastDentalVisit: Date,
+    status: AppointmentStatus
+}
+
+export interface OfficePortalCallLogs {
+    name: string,
+    phoneNumber: string,
+    createdAt: Date,
+    patientStatus: PatientStatus,
+    duration: number,
+    status: CallLogsStatus
+}
+
+export interface OfficePortalWebFormLogs {
+    name: string,
+    email: string,
+    formType: "Appointment Request",
+    submittedDate: Date,
+    submittedTime: {
+        hour: number,
+        minute: number
+    },
+    patientStatus: PatientStatus
+}
+
+export interface OfficePortalChatWidgetLogs {
+    visitorName: string,
+    email: string,
+    startTime: Date,
+    durationInSeconds: number,
+    agent: string,
+    patientStatus: PatientStatus
+}
+
+export interface OfficePortalSMSLogs {
+    patientName: string,
+    createdAt: Date,
+    phoneNumber: string,
+    message: string,
+    patientStatus: PatientStatus,
+    smsStatus: SMSLogsStatus
+}
+
+export interface OfficePortalPatientTrackingLogs {
+    name: string,
+    createdAt: Date,
+    phoneNumber: string,
+    email: string,
+    patientStatus: PatientStatus
+}

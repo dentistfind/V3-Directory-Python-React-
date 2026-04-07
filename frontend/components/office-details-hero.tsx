@@ -15,12 +15,12 @@ export default function OfficeDetailsHero({ officeData }: {officeData: OfficeDat
     return(
         <div className="bg-white text-black">
             <div className="text-xs flex items-center gap-1 p-5"><Link href={HOME_PAGE_URL} className="text-gray-400 flex items-center gap-1 cursor-pointer">DentistFind <FaChevronRight className="text-xs" /></Link> {officeName}</div>
-            <div className="px-20 pb-10">
-                <VideoCard videoSrc={videoSrc} videoThumbnail={videoThumbnail} className="rounded-3xl h-80 w-full" />
+            <div className="md:px-20 md:pb-10">
+                <VideoCard videoSrc={videoSrc} videoThumbnail={videoThumbnail} className="md:rounded-3xl h-80 w-full" />
             </div>
-            <div className="bg-theme-light px-20 py-5 flex justify-between">
+            <div className="bg-theme-light md:px-20 py-5 md:flex justify-between">
                 <div className="flex items-center gap-3">
-                    {logoUrl && (<div className="p-3 border border-gray-300 rounded-full">
+                    {logoUrl && (<div className="p-3 md:border border-gray-300 rounded-full">
                         <Image src={logoUrl} width={50} height={50} className="flex items-center justify-center rounded-full" alt={officeName} />
                     </div>)}
                     <div>
@@ -40,7 +40,7 @@ export default function OfficeDetailsHero({ officeData }: {officeData: OfficeDat
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex justify-center md:justify-start pt-5 md:pt-0 items-center gap-2">
                     <Button text={<div className="text-xs flex items-center gap-1"><FaPhone />Call Office</div>} />
                     <Button text={<div className="text-xs flex items-center gap-1"><CiLocationOn />Get Directions</div>} />
                 </div>

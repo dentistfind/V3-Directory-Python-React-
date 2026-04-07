@@ -37,64 +37,100 @@ export default function DirectoryPortalOffices({ userId }: { userId: string }){
     }
 
     return(
-        <div className="flex-1 min-h-screen p-5 space-y-7">
-            <div className="flex items-center justify-between">
+        <div className="flex-1 min-h-screen p-4 space-y-6 sm:p-5">
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
-                    <h2 className="font-semibold text-xl">Office Management</h2>
+                    <h2 className="font-semibold text-lg sm:text-xl">Office Management</h2>
                     <div className="text-sm font-light">Create and manage dental office listings</div>
                 </div>
-                <div onClick={handleAddNewOfficeButton}><Button fill text="+ Add Office" className="w-fit rounded-md" /></div>
+                <div onClick={handleAddNewOfficeButton}>
+                    <Button fill text="+ Add Office" className="w-full sm:w-fit rounded-md" />
+                </div>
             </div>
-            <div className="rounded-lg p-5 border border-gray-300 mt-5">
-                <div className="text-lg flex justify-between items-center">
-                    <h3 className="font-semibold">All Offices</h3>
-                    <div className="text-xs flex items-center gap-5 *:border *:border-gray-300 *:p-3 *:rounded">
-                        <div className="w-80 flex items-center gap-1">
+
+            {/* Office List */}
+            <div className="rounded-lg p-4 sm:p-5 border border-gray-300 mt-5">
+                {/* Filters */}
+                <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-3">
+                    <h3 className="font-semibold text-lg">All Offices</h3>
+                    <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-start sm:items-center">
+                        {/* Search */}
+                        <div className="flex items-center gap-2 w-full sm:w-80 border border-gray-300 rounded p-2">
                             <FaMagnifyingGlass className="text-gray-400" />
-                            <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value.toLowerCase())} className="outline-0 w-full" placeholder="Search by name, email, phone number" />
+                            <input
+                                value={inputSearch}
+                                onChange={(e) => setInputSearch(e.target.value.toLowerCase())}
+                                className="outline-none w-full text-sm"
+                                placeholder="Search by name, email, phone number"
+                            />
                         </div>
-                        <div className="relative w-32">
-                            <div className="absolute -top-2 bg-white px-1 text-gray-500">Status</div>
-                            <div onClick={() => setShowStatusDropdown(prev => !prev)} className="flex items-center justify-between cursor-pointer">
-                                <div>{statusDisplay}</div>
-                                {showStatusDropdown ? <FaChevronUp /> : <FaChevronDown />}
+
+                        {/* Status Dropdown */}
+                        <div className="relative w-full sm:w-32">
+                        <div className="absolute -top-2 bg-white px-1 text-gray-500 text-xs">Status</div>
+                        <div
+                            onClick={() => setShowStatusDropdown((prev) => !prev)}
+                            className="flex items-center justify-between cursor-pointer border border-gray-300 rounded p-2 bg-white"
+                        >
+                            <div className="text-sm">{statusDisplay}</div>
+                            {showStatusDropdown ? <FaChevronUp /> : <FaChevronDown />}
+                        </div>
+                        {showStatusDropdown && (
+                            <div className="absolute top-11 w-full bg-white p-2 flex flex-col gap-1 rounded-md border border-gray-300 shadow z-10">
+                            <div onClick={() => setStatusDisplay("All")} className="cursor-pointer hover:bg-gray-100 p-1 rounded">All</div>
+                            <div onClick={() => setStatusDisplay("Active")} className="cursor-pointer hover:bg-gray-100 p-1 rounded">Active</div>
+                            <div onClick={() => setStatusDisplay("Inactive")} className="cursor-pointer hover:bg-gray-100 p-1 rounded">Inactive</div>
                             </div>
-                            {showStatusDropdown && <div 
-                                className="absolute top-11 w-32 left-0 bg-white p-3 flex flex-col justify-between rounded-md border border-stone-200 shadow *:p-1 *:cursor-pointer *:hover:opacity-70">
-                                <div onClick={() => setStatusDisplay("All")}>All</div>
-                                <div onClick={() => setStatusDisplay("Active")}>Active</div>
-                                <div onClick={() => setStatusDisplay("Inactive")}>Inactive</div>
-                            </div>}
+                        )}
                         </div>
                     </div>
                 </div>
-                <div className="border border-gray-300 mt-5 *:border-b *:border-gray-300 *:p-3 *:*:w-1/6 *:flex *:items-center *:gap-2">
-                    <div className="uppercase font-light text-sm">
-                        <div>OFFICE NAME</div>
-                        <div>EMAIL</div>
-                        <div>PHONE</div>
-                        <div>STATUS</div>
-                        <div>LOCATION</div>
-                        <div>ACTIONS</div>
+
+                {/* Office Table / Cards */}
+                <div className="mt-4 border border-gray-300 rounded overflow-x-auto">
+                    <div className="hidden sm:grid grid-cols-6 border-b border-gray-300 p-2 text-xs font-light uppercase">
+                        <div>Office Name</div>
+                        <div>Email</div>
+                        <div>Phone</div>
+                        <div>Status</div>
+                        <div>Location</div>
+                        <div>Actions</div>
                     </div>
+
+                    {directoryOffices.length === 0 && (
+                        <div className="flex items-center justify-center py-5 text-sm">Office unavailable</div>
+                    )}
+
                     {directoryOffices.map((item, index) => (
-                        <div className="*:wrap-break-word *:whitespace-normal text-xs" key={index}>
-                            <div>{item.officeName}</div>
-                            <div>{item.email}</div>
-                            <div>{item.mobileNumber && "+"}{item.mobileNumber}</div>
-                            <div className={`rounded-full text-center py-2 ${item.isAvailable ? "bg-theme-light text-theme" : "bg-[#EBEBEB] text-[#5C5C5C]"}`}>
-                                {item.isAvailable ? "Active" : "In-Active"}
-                            </div>
-                            <div>{item.address.city}, {item.address.state}</div>
-                            <div className="text-lg flex items-center gap-3 *:cursor-pointer">
-                                <FiEdit />
-                                <FaTrashAlt className="text-[#E20C0C]" />
-                            </div>
+                        <div
+                        key={index}
+                        className="flex flex-col sm:grid sm:grid-cols-6 border-b border-gray-200 p-3 gap-2 sm:gap-0 text-xs"
+                        >
+                        <div className="sm:hidden font-semibold">Office Name:</div>
+                        <div>{item.officeName}</div>
+
+                        <div className="sm:hidden font-semibold">Email:</div>
+                        <div>{item.email}</div>
+
+                        <div className="sm:hidden font-semibold">Phone:</div>
+                        <div>{item.mobileNumber && "+"}{item.mobileNumber}</div>
+
+                        <div className="sm:hidden font-semibold">Status:</div>
+                        <div className={`rounded-full text-center py-1 px-2 ${item.isAvailable ? "bg-theme-light text-theme" : "bg-[#EBEBEB] text-[#5C5C5C]"}`}>
+                            {item.isAvailable ? "Active" : "Inactive"}
+                        </div>
+
+                        <div className="sm:hidden font-semibold">Location:</div>
+                        <div>{item.address.city}, {item.address.state}</div>
+
+                        <div className="sm:hidden font-semibold">Actions:</div>
+                        <div className="text-lg flex items-center gap-3 cursor-pointer">
+                            <FiEdit />
+                            <FaTrashAlt className="text-[#E20C0C]" />
+                        </div>
                         </div>
                     ))}
-                    {directoryOffices.length === 0 && <div className="flex items-center justify-center py-5 text-sm">
-                        Office unavailable    
-                    </div>}
                 </div>
             </div>
         </div>

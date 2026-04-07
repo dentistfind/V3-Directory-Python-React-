@@ -5,6 +5,7 @@ import RegisterHeader from "./ui/register-header";
 import Button from "./ui/button";
 import { useOfficeContext } from "@/context/OfficeContext";
 import { OfficeData } from "@/lib/interface";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentPage: Dispatch<SetStateAction<0 | 1>> }){
     useEffect(() => { 
@@ -37,15 +38,15 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
     }
 
     return(
-        <div className="px-20 py-10 bg-white text-black space-y-5">
+        <div className="px-10 md:px-20 py-10 bg-white text-black space-y-5">
             <RegisterHeader />
-            <div className="flex justify-center mt-10">
-                <div className="border border-gray-300 w-200 rounded-lg p-5 space-y-7">
+            <div className="flex justify-center md:mt-10">
+                <div className="border border-gray-300 w-200 rounded-lg p-5 space-y-7 *:space-y-7 md:*:space-y-0">
                     <div>
                         <h3 className="text-xl font-semibold">Office Profile</h3>
                         <div className="font-light text-gray-400 text-xs">Tell us about your dental office</div>
                     </div>
-                    <div className="flex items-center gap-5">
+                    <div className="md:flex items-center gap-5">
                         <Input 
                             value={officeData?.officeName} isInvalid={isInvalid.officeName}
                             onChange={(e) => setOfficeData((prev: OfficeData) => ({...prev, officeName: e.target.value}))} 
@@ -57,7 +58,7 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                             title="Owner/Director Name *" placeholder="ABC Dental Office" 
                         />
                     </div>
-                    <div className="flex items-center gap-5">
+                    <div className="md:flex items-center gap-5">
                         <Input 
                             value={officeData?.email} isInvalid={isInvalid.email}
                             onChange={(e) => setOfficeData((prev: OfficeData) => ({...prev, email: e.target.value}))} 
@@ -74,7 +75,7 @@ export default function RegisterOfficeForm1({ setComponentPage }:{ setComponentP
                         onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, street: e.target.value}}))} 
                         title="Street Address" placeholder="123 Main Street" 
                     />
-                    <div className="flex items-center gap-5">
+                    <div className="md:flex items-center gap-5">
                         <Input 
                             value={officeData.address.city} 
                             onChange={(e) => setOfficeData(prev => ({...prev, address: {...prev.address, city: e.target.value}}))} 

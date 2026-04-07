@@ -1,7 +1,7 @@
 import { DirectoryVideoData, ModalProps } from "@/lib/interface";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Input from "./input";
+import Input from "./ui/input";
 import { initialDirectoryVideoData } from "@/lib/temp-data";
 import { DIRECTORY_STATUS_DISPLAY, DirectoryStatusDisplay } from "@/lib/type";
 

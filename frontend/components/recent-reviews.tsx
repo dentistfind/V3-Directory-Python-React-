@@ -65,9 +65,9 @@ export default function RecentReviews(){
     }, [])
 
     return(
-        <div className="bg-white p-20 space-y-10 text-center">
-            <h2 className="text-2xl font-semibold">Recent Reviews</h2>
-            <div className="space-y-3 grid grid-cols-3 gap-5">
+        <div className="bg-white p-4 sm:p-8 lg:p-20 space-y-6 sm:space-y-10 text-center">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold px-2">Recent Reviews</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                 {reviews?.map((item, index) => (
                     <div key={index}>
                         <ReviewCard review={item} />
@@ -75,7 +75,7 @@ export default function RecentReviews(){
                 ))}
             </div>
             <div className="flex items-center justify-center">
-                <Button text={<div className="text-sm">View All</div>} />
+                <Button text={<div className="text-xs sm:text-sm">View All</div>} />
             </div>
         </div>
     )

@@ -22,3 +22,10 @@ export const DF_PORTAL_DASHBOARD = (id: string) => `${DF_PORTAL_URL}/${id}/dashb
 export const DF_PORTAL_USERS = (id: string) => `${DF_PORTAL_URL}/${id}/users`
 export const DF_PORTAL_OFFICES = (id: string) => `${DF_PORTAL_URL}/${id}/offices`
 export const DF_PORTAL_BILLINGS = (id: string) => `${DF_PORTAL_URL}/${id}/billings`
+
+export const OFFICE_PORTAL_URL = "/portals/office-portal"
+export const OFFICE_PORTAL_DASHBOARD = (id: string) => `${OFFICE_PORTAL_URL}/${id}/dashboard`
+export const OFFICE_PORTAL_APPOINTMENT_REQUESTS = (id: string) => `${OFFICE_PORTAL_URL}/${id}/appointment-requests`
+export const OFFICE_PORTAL_LEADS = (id: string) => `${OFFICE_PORTAL_URL}/${id}/leads`
+export const OFFICE_PORTAL_LOGS = (id: string) => `${OFFICE_PORTAL_URL}/${id}/logs`
+export const OFFICE_PORTAL_PATIENTS = (id: string) => `${OFFICE_PORTAL_URL}/${id}/patients`

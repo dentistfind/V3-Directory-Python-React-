@@ -1,4 +1,5 @@
 "use client"
+import DFPortalBillings from "@/components/df-portal-billings"
 import DFPortalDashboard from "@/components/df-portal-dashboard"
 import DFPortalNavbar from "@/components/df-portal-navbar"
 import DFPortalOffices from "@/components/df-portal-offices"
@@ -23,17 +24,26 @@ export default function DFPortalPage({ id, category, requestId }:{ id: string | 
     }, [id])
 
     return (
-        <div className="bg-white text-black">
+        <div className="bg-white text-black min-h-screen">
             {userData && <PortalHeader user={userData} category="DF Portal" />}
+            {userData && (
+                <div className="sm:hidden">
+                    <DFPortalNavbar userId={userData.id} />
+                </div>
+            )}
             <div className="flex">
-                {userData && <DFPortalNavbar userId={userData.id} />}
-                {category === "Dashboard" && <DFPortalDashboard />}
-                {category === "Users" && <DFPortalUserManagement />}
-                {category === "Offices" && <DFPortalOffices />}
-                {/* {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
-                {(category === "Reviews" && userData) && <DirectoryPortalReviews userId={userData.id} />}
-                {(category === "Review Details" && userData && requestId) && <DirectoryPortalReviewDetails userId={userData.id} requestId={requestId} />}
-                {(category === "Video Manager" && userData) && <DirectoryPortalVideoManager userData={userData} />} */}
+                {userData && (
+                    <div className="hidden sm:block">
+                        <DFPortalNavbar userId={userData.id} />
+                    </div>
+                )}
+                {/* {userData && <DFPortalNavbar userId={userData.id} />} */}
+                <div className="flex-1 w-full">
+                    {category === "Dashboard" && <DFPortalDashboard />}
+                    {category === "Users" && <DFPortalUserManagement />}
+                    {category === "Offices" && <DFPortalOffices />}
+                    {category === "Billings" && <DFPortalBillings />}
+                </div>
             </div>
         </div>
     )

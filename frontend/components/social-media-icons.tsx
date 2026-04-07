@@ -3,7 +3,7 @@ import { FaXTwitter, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa6
 
 export default function SocialMediaButtons(){
     return(
-        <div className="flex items-center justify-between gap-2 *:cursor-pointer *:flex *:items-center *:gap-2 *:text-sm *:text-muted-foreground *:hover:text-foreground *:transition-colors">
+        <div className="flex items-center md:justify-between gap-2 *:cursor-pointer *:flex *:items-center *:gap-2 *:text-sm *:text-muted-foreground *:hover:text-foreground *:transition-colors">
             <a href={TWITTER_URL}>
                 <FaXTwitter className="text-xl" />
             </a>

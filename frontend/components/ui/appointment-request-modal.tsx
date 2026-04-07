@@ -39,7 +39,7 @@ export default function AppointmentRequestModal({ isOpen, onClose, officeData }:
                 justifyContent: "center",
             }}
         >
-            <div className="w-120 rounded-xl m-auto p-5 bg-white space-y-5">
+            <div className="md:w-120 rounded-xl m-auto p-5 bg-white space-y-5">
                 <div className="flex text-xl items-center justify-between">
                     <h2 className="font-semibold">Appointment Request</h2>
                     <div onClick={onClose} className="cursor-pointer"><IoMdClose /></div>

@@ -40,42 +40,41 @@ export default function TopOfficesHighlight({ location: { city, country } }:{ lo
 
     return (
         <div className="text-black bg-white border-t border-gray-200">
-            <h2 className="text-2xl font-semibold p-10">Top Dental Offices in {city}</h2>
-            <div className="flex">
-              <div className="w-2/3 border border-gray-200">
+            <h2 className="text-lg sm:text-2xl font-semibold p-4 sm:p-6 lg:p-10">Top Dental Offices in {city}</h2>
+            <div className="flex flex-col lg:flex-row">
+              <div className="w-full lg:w-2/3 border border-gray-200 border-b lg:border-b-0">
                   {paginatedOffices.map((item, index) => (
                       <div key={startIndex + index}>
                           <TopOfficeCard officeCard={item} />
                       </div>
                   ))}
               </div>
-              <div className="w-1/3">
+              <div className="w-full lg:w-1/3 min-h-64 sm:min-h-96 lg:min-h-auto">
                 {mapEmbed}
               </div>
             </div>
-            <div className="p-5 font-light flex items-center justify-between">
-              {startIndex + 1}-{endIndex} of {totalRecordCount} records
-              <div className="text-sm flex items-center gap-3 *:cursor-pointer">
-                <div onClick={handlePrevious} className="flex items-center gap-2">
+            <div className="p-3 sm:p-4 lg:p-5 font-light flex flex-col sm:flex-row gap-3 sm:gap-0 items-start sm:items-center sm:justify-between">
+              <div className="text-xs sm:text-sm">{startIndex + 1}-{endIndex} of {totalRecordCount} records</div>
+              <div className="text-xs sm:text-sm flex flex-wrap items-center gap-2 *:cursor-pointer">
+                <div onClick={handlePrevious} className="flex items-center gap-1 hover:text-theme">
                   <FaArrowLeft />
-                  Previous
+                  <span className="hidden sm:inline">Previous</span>
                 </div>
                 {Array.from({ length: LAST_PAGE }, (_, i) => i + 1).map((item, index) => (
                   <div 
                     key={index}
                     onClick={() => setCurrentPage(item)}
                     style={{ color: currentPage === item ? "white" : "black"}} 
-                    className={`${currentPage === item && "bg-theme rounded-md px-2 py-1"}`}
+                    className={`${currentPage === item && "bg-theme rounded-md px-2 py-1"} hover:opacity-70`}
                   >
                     {item}
                   </div>
                 ))}
-                <div onClick={handleNext} className="flex items-center gap-2">
-                  Next
+                <div onClick={handleNext} className="flex items-center gap-1 hover:text-theme">
+                  <span className="hidden sm:inline">Next</span>
                   <FaArrowRight />
                 </div>
               </div>
-              <div></div>
             </div>
         </div>
     )

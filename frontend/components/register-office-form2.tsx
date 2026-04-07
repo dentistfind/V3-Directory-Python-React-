@@ -41,7 +41,7 @@ export default function RegisterOfficeForm2({ setComponentPage, setSubmitIsSucce
         }
     }
     return(
-        <div className="px-20 py-10 bg-white text-black space-y-5">
+        <div className="px-10 md:px-20 py-10 bg-white text-black space-y-5">
             <RegisterHeader secondPage />
             <div className="flex justify-center mt-10">
                 <div className="border border-gray-300 w-200 rounded-lg p-5 space-y-7">

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { VideoCardData } from "@/lib/interface";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function VideoCard({ videoSrc, videoThumbnail, className = ""}: VideoCardData) {
+  const isMobile = useIsMobile()
   const [playing, setPlaying] = useState(false);
 
   return (
@@ -34,10 +36,10 @@ export default function VideoCard({ videoSrc, videoThumbnail, className = ""}: V
 
             <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-16 h-16 rounded-full bg-theme flex items-center justify-center group-hover:bg-primary transition-colors shadow-xl"
+                  whileHover={{ scale: 1.1 }}
+                  className={`w-16 h-16 rounded-full ${!isMobile && "bg-theme"} flex items-center justify-center group-hover:bg-primary transition-colors shadow-xl`}
                 >
-                <divlay className="w-6 h-6 text-white group-hover:text-primary-foreground ml-1 transition-colors" />
+                  <Play className="w-6 h-6 text-white group-hover:text-primary-foreground ml-1 transition-colors" />
                 </motion.div>
             </div>
         </div>

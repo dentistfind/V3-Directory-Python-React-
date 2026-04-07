@@ -27,17 +27,30 @@ export default function DirectoryUser({ id, category, requestId }:{ id: string |
     }, [id])
 
     return (
-        <div className="bg-white text-black">
+        <div className="bg-white text-black min-h-screen">
             {userData && <PortalHeader user={userData} category="Directory Portal" />}
+            {userData && (
+                <div className="sm:hidden">
+                    <DirectoryNavbar userId={userData.id} />
+                </div>
+            )}
             <div className="flex">
-                {userData && <DirectoryNavbar userId={userData.id} />}
-                {category === "Dashboard" && <DirectoryPortalDashboard />}
-                {(userData && category === "Offices") && <DirectoryPortalOffices userId={userData.id} />}
-                {(category === "Office Request" && userData) && <DirectoryPortalOfficeRequests userId={userData.id} />}
-                {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
-                {(category === "Reviews" && userData) && <DirectoryPortalReviews userId={userData.id} />}
-                {(category === "Review Details" && userData && requestId) && <DirectoryPortalReviewDetails userId={userData.id} requestId={requestId} />}
-                {(category === "Video Manager" && userData) && <DirectoryPortalVideoManager userData={userData} />}
+                {userData && (
+                    <div className="hidden sm:block">
+                        <DirectoryNavbar userId={userData.id} />
+                    </div>
+                )}
+                <div className="flex-1 w-full">
+                    {category === "Dashboard" && (
+                        <DirectoryPortalDashboard />
+                    )}
+                    {(userData && category === "Offices") && <DirectoryPortalOffices userId={userData.id} />}
+                    {(category === "Office Request" && userData) && <DirectoryPortalOfficeRequests userId={userData.id} />}
+                    {(category === "Request Details" && requestId && userData) && <OfficeRequestDetails userId={userData.id} requestId={requestId} />}
+                    {(category === "Reviews" && userData) && <DirectoryPortalReviews userId={userData.id} />}
+                    {(category === "Review Details" && userData && requestId) && <DirectoryPortalReviewDetails userId={userData.id} requestId={requestId} />}
+                    {(category === "Video Manager" && userData) && <DirectoryPortalVideoManager userData={userData} />}
+                </div>
             </div>
         </div>
     )

@@ -15,7 +15,7 @@ export default function LoginForm(){
     return(
         <div className="bg-white text-black relative flex-1">
             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="border border-theme-light p-5 w-100 h-80 z-10 flex flex-col items-center justify-between gap-3 rounded-lg shadow">
+                <div className="md:border border-theme-light p-5 w-100 h-80 z-10 flex flex-col items-center justify-between gap-3 rounded-lg md:shadow">
                     <Image src="/dentistfind-logo.png" width={150} height={150} alt="DentistFind Logo" />
                     <Input 
                         value={loginInput.email} 
